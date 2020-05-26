@@ -1,9 +1,26 @@
 #include <iostream>
 
+#include "HomeBudget.h"
+
 using namespace std;
+
+int _main()
+{
+   HomeBudget homeBudget;
+   homeBudget.userRegistration();
+}
+
+#include "UserManager.h"
 
 int main()
 {
-    cout << "Hello world!" << endl;
-    return 0;
+    UserManager userManager;
+    userManager.userRegistration();
+    userManager.userRegistration();
+    userManager.userRegistration();
+    userManager.userRegistration();
+    userManager.printAllUsers();
+
+
+
 }
