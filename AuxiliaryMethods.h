@@ -14,7 +14,7 @@ using namespace std;
 class AuxiliaryMethods
 {
 public:
-     static string replaceFirstLetterToUpperCaseRemainingToLowerCase(string text);
+    static string replaceFirstLetterToUpperCaseRemainingToLowerCase(string text);
     static string getLine();
 };
 

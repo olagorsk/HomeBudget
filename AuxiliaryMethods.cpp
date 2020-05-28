@@ -15,7 +15,7 @@ string AuxiliaryMethods::replaceFirstLetterToUpperCaseRemainingToLowerCase(strin
 string AuxiliaryMethods::getLine()
 {
     string input = "";
-    cin.ignore();
+    //cin.ignore();
     getline(cin, input);
     return input;
 }

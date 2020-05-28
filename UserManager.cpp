@@ -5,10 +5,11 @@ using namespace std;
 
 void UserManager::userRegistration()
 {
-     User user = getNewUserDetails();
+    User oneUser = getNewUserDetails();
 
-    users.push_back(user);
-  //  plikZUzytkownikami.dopiszUzytkownikaDoPliku(uzytkownik);
+    users.push_back(oneUser);
+    usersXmlFile.addUserToTile(oneUser);
+   //  plikZUzytkownikami.dopiszUzytkownikaDoPliku(uzytkownik);
 
     cout << endl << "Konto zalozono pomyslnie" << endl;
     system("pause");
@@ -22,15 +23,23 @@ User UserManager::getNewUserDetails()
     string login;
     do
     {
-        cout << "Podaj login: ";
-        cin>> login;
-       user.setLogin(login);
+        do
+        {
+            cout << "Podaj login: ";
+            login = AuxiliaryMethods::getLine();
+        }
+        while (checkLoginPassword(login)==false);
+        user.setLogin(login);
     }
     while (checkLoginExistence(user.getLogin()) == true);
     string password;
-    cout << "Podaj haslo: ";
-    cin>>password;
-    user.setPassword(password);
+    do
+    {
+        cout << "Podaj haslo: ";
+        password = AuxiliaryMethods::getLine();
+    }
+    while (checkLoginPassword(password)==false);
+        user.setPassword(password);
 
     string name;
     cout<<"Podaj imie: ";
@@ -47,6 +56,28 @@ User UserManager::getNewUserDetails()
     return user;
 }
 
+
+bool UserManager::checkLoginPassword(string login)
+{
+
+    for (int i=0; i<login.length(); i++)
+    {
+        if (login[i]==32)
+        {
+            cout<<"Login/haslo nie moga zawierac spacji"<<endl;
+            return false;
+        }
+        if ((login[i]>='0' && login[i]<='9')||(login[i]>='A'&& login[i]<='Z')||(login[i]>='a'&& login[i]<='z'));
+
+        else
+        {
+            cout<<"Login/haslo moze zawierac tylko cyfry i litery"<<endl;
+            return false;
+        }
+        if (i==login.length()-1)
+            return true;
+    }
+}
 
 int UserManager::getIdNewUser()
 {
@@ -71,7 +102,7 @@ bool UserManager::checkLoginExistence(string login)
 
 void UserManager::printAllUsers()
 {
-     for (int i=0; i<users.size(); i++)
+    for (int i=0; i<users.size(); i++)
     {
         cout << users[i].getId()<<endl;
         cout << users[i].getLogin()<<endl;
