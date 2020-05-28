@@ -19,3 +19,12 @@ string AuxiliaryMethods::getLine()
     getline(cin, input);
     return input;
 }
+
+
+int AuxiliaryMethods::conversionStringToInt(string number)
+{
+    int numberInt;
+    istringstream iss(number);
+    iss >> numberInt;
+    return numberInt;
+}

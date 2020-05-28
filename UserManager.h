@@ -18,6 +18,7 @@ using namespace std;
 class UserManager
 {
 vector<User>users;
+
 UsersXmlFile usersXmlFile;
 
 
@@ -27,8 +28,15 @@ bool checkLoginExistence(string login);
 bool checkLoginPassword(string login);
 
 public:
+
+ UserManager()
+{
+        users = usersXmlFile.loadUsersFromFile();
+    };
+
 void userRegistration();
 void printAllUsers();
+//vector <User> loadUsersFromFile();
 
 
 

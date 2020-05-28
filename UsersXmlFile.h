@@ -8,6 +8,8 @@
 #include <sstream>
 
 #include "User.h"
+#include "AuxiliaryMethods.h"
+
 
 using namespace std;
 
@@ -18,8 +20,8 @@ class UsersXmlFile
 
   public:
 
-      void addUserToTile(User oneUser);
-
+      void addUserToFile(User oneUser);
+    vector <User> loadUsersFromFile();
 
 
 };

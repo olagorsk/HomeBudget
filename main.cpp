@@ -15,11 +15,15 @@ int _main()
 int main()
 {
     UserManager userManager;
+       //userManager.loadUsersFromFile();
+     //  userManager.printAllUsers();
+
     userManager.userRegistration();
     userManager.userRegistration();
     userManager.userRegistration();
     userManager.userRegistration();
     userManager.printAllUsers();
+
 
 
 

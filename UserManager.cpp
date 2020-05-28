@@ -8,8 +8,7 @@ void UserManager::userRegistration()
     User oneUser = getNewUserDetails();
 
     users.push_back(oneUser);
-    usersXmlFile.addUserToTile(oneUser);
-   //  plikZUzytkownikami.dopiszUzytkownikaDoPliku(uzytkownik);
+    usersXmlFile.addUserToFile(oneUser);
 
     cout << endl << "Konto zalozono pomyslnie" << endl;
     system("pause");
@@ -109,3 +108,9 @@ void UserManager::printAllUsers()
         cout << users[i].getPassword()<<endl;
     }
 }
+
+/*vector <User>  UserManager::loadUsersFromFile()
+{
+    usersXmlFile.loadUsersFromFile();
+}
+*/

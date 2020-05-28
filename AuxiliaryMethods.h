@@ -16,6 +16,7 @@ class AuxiliaryMethods
 public:
     static string replaceFirstLetterToUpperCaseRemainingToLowerCase(string text);
     static string getLine();
+    static int conversionStringToInt(string number);
 };
 
 #endif
