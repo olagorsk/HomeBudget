@@ -29,7 +29,7 @@ bool checkLoginPassword(string login);
 
 public:
 
- UserManager()
+ UserManager(string usersFileName):usersXmlFile(usersFileName)
 {
         users = usersXmlFile.loadUsersFromFile();
     };

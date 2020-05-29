@@ -15,10 +15,14 @@ using namespace std;
 
 class UsersXmlFile
 {
-  string usersFileName;
+  const string USERS_FILE_NAME;
     CMarkup xmlUsers;
 
   public:
+      UsersXmlFile (string usersFileName):USERS_FILE_NAME(usersFileName)
+      {
+
+      };
 
       void addUserToFile(User oneUser);
     vector <User> loadUsersFromFile();

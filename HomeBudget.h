@@ -15,6 +15,7 @@ UserManager userManager;
 
 
 public:
+    HomeBudget(string usersFileName):userManager(usersFileName){};
     void userRegistration();
 
 

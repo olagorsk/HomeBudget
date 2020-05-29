@@ -4,12 +4,12 @@
 
 using namespace std;
 
-int _main()
+int main()
 {
-   HomeBudget homeBudget;
+   HomeBudget homeBudget ("users.xml");
    homeBudget.userRegistration();
 }
-
+/*
 #include "UserManager.h"
 
 int main()
@@ -28,3 +28,4 @@ int main()
 
 
 }
+*/
