@@ -14,8 +14,10 @@ using namespace std;
 class AuxiliaryMethods
 {
 public:
-     static string replaceFirstLetterToUpperCaseRemainingToLowerCase(string text);
+    static string replaceFirstLetterToUpperCaseRemainingToLowerCase(string text);
     static string getLine();
+    static int conversionStringToInt(string number);
+    static string conversionIntToStr(int number);
 };
 
 #endif

@@ -2,3 +2,4 @@ README.md
 HB_HomeBudget.*
 bin/
 obj/
+*.xml

@@ -15,7 +15,24 @@ string AuxiliaryMethods::replaceFirstLetterToUpperCaseRemainingToLowerCase(strin
 string AuxiliaryMethods::getLine()
 {
     string input = "";
-    cin.ignore();
+    //cin.ignore();
     getline(cin, input);
     return input;
+}
+
+
+int AuxiliaryMethods::conversionStringToInt(string number)
+{
+    int numberInt;
+    istringstream iss(number);
+    iss >> numberInt;
+    return numberInt;
+}
+
+string AuxiliaryMethods::conversionIntToStr(int number)
+{
+    ostringstream ss;
+    ss << number;
+    string str = ss.str();
+    return str;
 }

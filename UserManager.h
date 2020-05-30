@@ -11,6 +11,7 @@
 
 #include "User.h"
 #include "AuxiliaryMethods.h"
+#include "UsersXmlFile.h"
 
 using namespace std;
 
@@ -18,15 +19,28 @@ class UserManager
 {
 vector<User>users;
 
+UsersXmlFile usersXmlFile;
+
+int idLoggedUser;
+
 
 int getIdNewUser();
 User getNewUserDetails();
 bool checkLoginExistence(string login);
-bool checkLogin (string login);
+bool checkLoginPassword(string login);
 
 public:
+
+ UserManager(string usersFileName):usersXmlFile(usersFileName)
+{
+        users = usersXmlFile.loadUsersFromFile();
+    };
+
 void userRegistration();
 void printAllUsers();
+int userLogging();
+void changePasswordOfLoggedUser();
+int userLoggingOut();
 
 
 
