@@ -83,9 +83,8 @@ void UsersXmlFile::changePasswordInXmlFile(User user)
         if (xmlUsers.GetChildData()==idLoggedUserStr)
         {
             xmlUsers.FindChildElem("password");
-
-            xmlUsers.RemoveChildElem();
-            xmlUsers.AddChildElem("password", user.getPassword());
+            xmlUsers.SetChildData( user.getPassword() );
+         //   xmlUsers.AddChildElem("password", );
             break;
         }
     }
