@@ -10,10 +10,8 @@ vector <User> UsersXmlFile::loadUsersFromFile()
     vector <User> users;
 
     xmlUsers.Load(USERS_FILE_NAME);
-
-
     xmlUsers.ResetPos();
-//  xmlUsers.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
+
     while ( xmlUsers.FindElem("user") )
     {
         xmlUsers.IntoElem();
@@ -38,25 +36,58 @@ vector <User> UsersXmlFile::loadUsersFromFile()
     return users;
 }
 
-void UsersXmlFile::addUserToFile(User oneUser)
+void UsersXmlFile::addUserToFile(User user)
 {
-   if (xmlUsers.Load(USERS_FILE_NAME)==false)
-    xmlUsers.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
 
+    xmlUsers.Load(USERS_FILE_NAME);
+
+    if (xmlUsers.FindElem("user")==false)
+    {
+        xmlUsers.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
+    }
     xmlUsers.ResetPos();
     xmlUsers.FindElem();
     while (xmlUsers.FindElem("user") );
-
     xmlUsers.OutOfElem();
 
+    pushOneUserToXml(user);
+    xmlUsers.Save(USERS_FILE_NAME);
+}
+
+
+void UsersXmlFile::pushOneUserToXml(User user)
+{
     xmlUsers.AddElem("user");
     xmlUsers.IntoElem();
-    xmlUsers.AddElem("userId", oneUser.getId());
-    xmlUsers.AddElem("login", oneUser.getLogin());
-    xmlUsers.AddElem("password",oneUser.getPassword());
-    xmlUsers.AddElem("name", oneUser.getName());
-    xmlUsers.AddElem("surname", oneUser.getSurname());
+    xmlUsers.AddElem("userId", user.getId());
+    xmlUsers.AddElem("login", user.getLogin());
+    xmlUsers.AddElem("password",user.getPassword());
+    xmlUsers.AddElem("name", user.getName());
+    xmlUsers.AddElem("surname", user.getSurname());
     xmlUsers.OutOfElem();
+}
 
+
+
+
+void UsersXmlFile::changePasswordInXmlFile(User user)
+{
+    string idLoggedUserStr;
+    idLoggedUserStr = AuxiliaryMethods::conversionIntToStr(user.getId());
+
+    xmlUsers.Load(USERS_FILE_NAME);
+    xmlUsers.ResetPos();
+    while (xmlUsers.FindElem("user") )
+    {
+        xmlUsers.FindChildElem();
+        if (xmlUsers.GetChildData()==idLoggedUserStr)
+        {
+            xmlUsers.FindChildElem("password");
+
+            xmlUsers.RemoveChildElem();
+            xmlUsers.AddChildElem("password", user.getPassword());
+            break;
+        }
+    }
     xmlUsers.Save(USERS_FILE_NAME);
 }

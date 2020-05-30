@@ -9,15 +9,15 @@ using namespace std;
 
 class HomeBudget
 {
-UserManager userManager;
+    UserManager userManager;
 
 
 
 
 public:
-    HomeBudget(string usersFileName):userManager(usersFileName){};
+    HomeBudget(string usersFileName):userManager(usersFileName) {};
     void userRegistration();
-
+    int userLogging();
 
 
 };

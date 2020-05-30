@@ -5,10 +5,10 @@ using namespace std;
 
 void UserManager::userRegistration()
 {
-    User oneUser = getNewUserDetails();
+    User user = getNewUserDetails();
 
-    users.push_back(oneUser);
-    usersXmlFile.addUserToFile(oneUser);
+    users.push_back(user);
+    usersXmlFile.addUserToFile(user);
 
     cout << endl << "Konto zalozono pomyslnie" << endl;
     system("pause");
@@ -109,8 +109,73 @@ void UserManager::printAllUsers()
     }
 }
 
-/*vector <User>  UserManager::loadUsersFromFile()
+int UserManager::userLogging()
 {
-    usersXmlFile.loadUsersFromFile();
+    string login = "", password = "";
+
+    cout << endl << "Podaj login: ";
+    login = AuxiliaryMethods::getLine();
+
+    for (int i=0; i<users.size(); ++i)
+    {
+        if (users[i].getLogin() == login)
+        {
+            for (int test = 3; test > 0; test--)
+            {
+                cout << "Podaj haslo. Pozostalo prob: " << test << ": ";
+                 password = AuxiliaryMethods::getLine();
+
+                if (users[i].getPassword() == password)
+                {
+                    cout << endl << "Zalogowales sie." << endl << endl;
+                    system("pause");
+                    return idLoggedUser = users[i].getId();
+                }
+            }
+            cout << "Wprowadzono 3 razy bledne haslo." << endl;
+            system("pause");
+            return 0;
+        }
+    }
+    cout << "Nie ma uzytkownika z takim loginem" << endl << endl;
+    system("pause");
+    return 0;
 }
-*/
+
+void UserManager::changePasswordOfLoggedUser()
+{
+     string newPassword = "";
+   User user;
+     do
+    {
+        cout << "Podaj nowe haslo: ";
+        newPassword = AuxiliaryMethods::getLine();
+    }
+    while (checkLoginPassword(newPassword)==false);
+
+    for (int i=0; i<users.size(); ++i)
+    {
+        if (users[i].getId() == idLoggedUser)
+        {
+            users[i].setPassword(newPassword);
+            cout << "Haslo zostalo zmienione." << endl << endl;
+            user = users[i];
+            system("pause");
+            break;
+
+        }
+    }
+    usersXmlFile.changePasswordInXmlFile(user);
+
+}
+
+int UserManager::userLoggingOut()
+{
+       idLoggedUser = 0;
+    cout<<endl<<"Wylogowales sie"<<endl;
+    cout<<"Id zalogowanego uzytkownika "<<idLoggedUser<<endl;
+    system("pause");
+    return idLoggedUser;
+
+}
+

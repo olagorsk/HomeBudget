@@ -28,3 +28,11 @@ int AuxiliaryMethods::conversionStringToInt(string number)
     iss >> numberInt;
     return numberInt;
 }
+
+string AuxiliaryMethods::conversionIntToStr(int number)
+{
+    ostringstream ss;
+    ss << number;
+    string str = ss.str();
+    return str;
+}

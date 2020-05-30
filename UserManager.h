@@ -21,6 +21,8 @@ vector<User>users;
 
 UsersXmlFile usersXmlFile;
 
+int idLoggedUser;
+
 
 int getIdNewUser();
 User getNewUserDetails();
@@ -36,7 +38,9 @@ public:
 
 void userRegistration();
 void printAllUsers();
-//vector <User> loadUsersFromFile();
+int userLogging();
+void changePasswordOfLoggedUser();
+int userLoggingOut();
 
 
 
