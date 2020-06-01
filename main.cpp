@@ -15,19 +15,14 @@ int _main()
   // cout<<"Id zalogowanego uzytkownika "<< idTEST<<endl;
 }
 
-#include "UserManager.h"
+#include "DateManager.h"
 
 int main()
 {
-    UserManager userManager("users.xml");
-       //userManager.loadUsersFromFile();
-     //  userManager.printAllUsers();
+      DateManager dateManager;
 
+     dateManager.getDate();
 
-    userManager.userLogging();
-
-    //userManager.printAllUsers();
-    userManager.changePasswordOfLoggedUser();
 
 
 
