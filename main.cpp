@@ -15,19 +15,14 @@ int _main()
   // cout<<"Id zalogowanego uzytkownika "<< idTEST<<endl;
 }
 
-#include "UserManager.h"
+#include "BudgetManager.h"
 
 int main()
 {
-    UserManager userManager("users.xml");
-       //userManager.loadUsersFromFile();
-     //  userManager.printAllUsers();
+      BudgetManager budgetManager(14);
 
+     budgetManager.addIncome();
 
-    userManager.userLogging();
-
-    //userManager.printAllUsers();
-    userManager.changePasswordOfLoggedUser();
 
 
 

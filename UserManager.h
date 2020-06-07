@@ -41,6 +41,8 @@ void printAllUsers();
 int userLogging();
 void changePasswordOfLoggedUser();
 int userLoggingOut();
+int getIdLoggedUser();
+bool isUserLogged();
 
 
 

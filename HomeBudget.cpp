@@ -10,5 +10,9 @@ void HomeBudget::userRegistration()
 
 int HomeBudget::userLogging()
 {
-      userManager.userLogging();
+       userManager.userLogging();
+    if (userManager.isUserLogged())
+    {
+        budgetManager = new BudgetManager(userManager.getIdLoggedUser());
+    }
 }
