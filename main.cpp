@@ -15,13 +15,13 @@ int _main()
   // cout<<"Id zalogowanego uzytkownika "<< idTEST<<endl;
 }
 
-#include "DateManager.h"
+#include "BudgetManager.h"
 
 int main()
 {
-      DateManager dateManager;
+      BudgetManager budgetManager(14);
 
-     dateManager.getDate();
+     budgetManager.addIncome();
 
 
 

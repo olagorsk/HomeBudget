@@ -8,11 +8,6 @@ Date DateManager::getTodayDate()
     SYSTEMTIME st;
     GetSystemTime(&st);
 
-
-    cout << "Biezacy rok to " << st.wYear<< endl;
-    cout << "Biezacy miesiac to " << st.wMonth<< endl;
-    cout << "Biezacy dzien  to " << st.wDay<< endl;
-
     todayDate.setDay(st.wDay);
     todayDate.setMonth(st.wMonth);
     todayDate.setYear(st.wYear);
@@ -36,8 +31,7 @@ Date DateManager::getDate()
     }
     while (checkDate(oneDate)==false);
 
-   // dates.push_back(oneDate);
-
+    return oneDate;
 }
 
 bool DateManager::checkDateFormat()
@@ -179,4 +173,22 @@ bool  DateManager::checkDate(Date oneDate)
         return true;
     else
         return false;
+}
+
+string DateManager::convertDateToStr(Date oneDate)
+{
+
+    string year, month, day;
+    year = AuxiliaryMethods::conversionIntToStr(oneDate.getYear());
+    month = AuxiliaryMethods::conversionIntToStr(oneDate.getMonth());
+    day = AuxiliaryMethods::conversionIntToStr(oneDate.getDay());
+    if (month.length()==1)
+        month = '0'+ month;
+
+    if (day.length()==1)
+        day = '0'+ day;
+
+    dateStr = year + "-" + month + "-" + day;
+
+    return dateStr;
 }

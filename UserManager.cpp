@@ -179,3 +179,16 @@ int UserManager::userLoggingOut()
 
 }
 
+int UserManager::getIdLoggedUser()
+{
+    return idLoggedUser;
+}
+
+bool UserManager::isUserLogged()
+{
+    if(idLoggedUser>0)
+        return true;
+    else
+        return false;
+}
+

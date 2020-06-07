@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "DateManager.h"
+#include "Date.h"
 
 using namespace std;
 
@@ -17,19 +18,19 @@ float amount;
 
 
 public:
-/*
-    void setId(int newId);
-    void setLogin (string newLogin);
-    void setPassword(string newPassword);
-    void setName (string newName);
-    void setSurname (string newSurname);
 
-    int getId();
-    string getLogin();
-    string getPassword();
-    string getName();
-    string getSurname();
-*/
+    void setUserId(int newUserId);
+    void setIncomeId (int newIncomeId);
+    void setIncomeDate(Date newIncomeDate);
+    void setItem (string newItem);
+    void setAmount (float newAmount);
+
+    int getUserId();
+    int getIncomeId();
+    Date getIncomeDate();
+    string getItem();
+    float getAmount();
+
 };
 
 #endif

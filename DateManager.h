@@ -12,6 +12,7 @@
 #include <sstream>
 
 #include "Date.h"
+#include "AuxiliaryMethods.h"
 
 using namespace std;
 
@@ -33,6 +34,7 @@ Date  convertDateStrToDate ();
 bool  checkDate(Date oneDate);
 
 
+
 public:
 DateManager()
 {
@@ -41,6 +43,7 @@ DateManager()
 
 Date getTodayDate();
 Date getDate();
+string convertDateToStr(Date oneDate);
 
 
 

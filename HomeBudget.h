@@ -11,13 +11,22 @@ using namespace std;
 class HomeBudget
 {
     UserManager userManager;
-    BudgetManager budgetManager;
+    BudgetManager *budgetManager;
 
 
 
 
 public:
-    HomeBudget(string usersFileName):userManager(usersFileName) {};
+    HomeBudget(string usersFileName):userManager(usersFileName)
+     {
+     budgetManager = NULL;
+     };
+
+    ~HomeBudget()
+    {
+        delete budgetManager;
+        budgetManager = NULL;
+    };
     void userRegistration();
     int userLogging();
 
