@@ -8,7 +8,7 @@ void BudgetManager::addIncome()
     Income income;
     income = getDetailsOfIncome();
     incomes.push_back(income);
-
+/*
     for (int i=0; i<incomes.size(); i++)
     {
         cout<<"UserId "<<incomes[i].getUserId()<<endl;
@@ -18,8 +18,67 @@ void BudgetManager::addIncome()
               cout<<"Income Item "<<incomes[i].getItem()<<endl;
     }
 
+*/
+}
+
+void BudgetManager::addExpense()
+{
+    Expense expense;
+    expense = getDetailsOfExpense();
+    expenses.push_back(expense);
+
+
+ for (int i=0; i<expenses.size(); i++)
+    {
+        cout<<"UserId "<<expenses[i].getUserId()<<endl;
+        cout<<"Wydatek Id "<<expenses[i].getExpenseId()<<endl;
+          cout<<"Wydatek date "<<dateManager.convertDateToStr(expenses[i].getExpenseDate())<<endl;
+            cout<<"Wydatek Amount "<<expenses[i].getAmount()<<endl;
+              cout<<"Wydatek Item "<<expenses[i].getItem()<<endl;
+              system("pause");
+    }
+}
+
+Expense BudgetManager::getDetailsOfExpense()
+{
+     Expense expense;
+    char sign;
+    string amountStr;
+    float amount;
+
+    expense.setUserId(ID_LOGGED_USER);
+
+    if (expenses.empty() == true)
+      expense.setExpenseId(1);
+    else
+       expense.setExpenseId(expenses.back().getExpenseId() + 1);
+
+    system("cls");
+    cout<<"Czy wydatek dotyczy dnia dzisiejszego? Jezeli tak wpisz 't', jezeli nie wcisnij dowolny klawisz"<<endl;
+    sign = getchar();
+    if (sign == 't')
+        expense.setExpenseDate(dateManager.getTodayDate());
+    else
+    {
+        expense.setExpenseDate(dateManager.getDate());
+    }
+    cin.ignore();
+
+    cout<<"Podaj czego dotyczy wydatek"<<endl;
+    expense.setItem(AuxiliaryMethods::getLine());
+
+    do
+    {
+        cout<<"Podaj wysokosc wydatku"<<endl;
+        amountStr = AuxiliaryMethods::getLine();
+    }
+    while ((checkAmount (amountStr))==false);
+
+    expense.setAmount(convertStringToFloat(amountStr));
+    return expense;
 
 }
+
 
 Income BudgetManager::getDetailsOfIncome()
 {

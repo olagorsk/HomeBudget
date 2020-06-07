@@ -18,19 +18,19 @@ float amount;
 
 
 public:
-/*
-    void setId(int newId);
-    void setLogin (string newLogin);
-    void setPassword(string newPassword);
-    void setName (string newName);
-    void setSurname (string newSurname);
 
-    int getId();
-    string getLogin();
-    string getPassword();
-    string getName();
-    string getSurname();
-*/
+   void setUserId(int newUserId);
+    void setExpenseId (int newExpenseId);
+    void setExpenseDate(Date newExpenseDate);
+    void setItem (string newItem);
+    void setAmount (float newAmount);
+
+    int getUserId();
+    int getExpenseId();
+    Date getExpenseDate();
+    string getItem();
+    float getAmount();
+
 };
 
 #endif

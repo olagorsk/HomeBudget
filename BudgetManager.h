@@ -30,13 +30,16 @@ class BudgetManager
 vector <Expense> expenses;
    bool checkAmount (string amount);
     float  convertStringToFloat(string amount);
+        Income getDetailsOfIncome();
+     Expense getDetailsOfExpense();
 
 
 public:
 BudgetManager (int idLoggedUser): ID_LOGGED_USER(idLoggedUser)
 {};
     void addIncome();
-     Income getDetailsOfIncome();
+    void addExpense();
+
 
 
 
