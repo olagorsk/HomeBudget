@@ -27,16 +27,19 @@ class BudgetManager
     int ID_LOGGED_USER;
     DateManager dateManager;
     vector <Income> incomes;
-vector <Expense> expenses;
-   bool checkAmount (string amount);
+    vector <Expense> expenses;
+    bool checkAmount (string amount);
     float  convertStringToFloat(string amount);
+    Income getDetailsOfIncome();
+    Expense getDetailsOfExpense();
 
 
 public:
-BudgetManager (int idLoggedUser): ID_LOGGED_USER(idLoggedUser)
-{};
+    BudgetManager (int idLoggedUser): ID_LOGGED_USER(idLoggedUser)
+    {};
     void addIncome();
-     Income getDetailsOfIncome();
+    void addExpense();
+
 
 
 

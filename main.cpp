@@ -23,9 +23,9 @@ int main()
 
      budgetManager.addIncome();
 
-
-
-
+       budgetManager.addExpense();
+         budgetManager.addExpense();
+           budgetManager.addExpense();
 
 
 }
