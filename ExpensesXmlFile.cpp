@@ -39,6 +39,8 @@ vector <Expense> ExpensesXmlFile::loadExpensesFromFile(int idLoggedUser)
         xmlExpenses.OutOfElem();
         expenses.push_back(expense);
         }
+             else
+        xmlExpenses.OutOfElem();
 
     }
     return expenses;

@@ -23,7 +23,7 @@ public:
 
     static string convertFloatToStr(float amount);
     static float  convertStringToFloat(string amount);
-
+static char getChar();
 
 
 };

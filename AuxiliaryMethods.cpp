@@ -61,3 +61,21 @@ string amountStr = stream.str();
 return amountStr;
 }
 
+char AuxiliaryMethods::getChar()
+{
+    string input = "";
+    char sign = {0};
+
+    while (true)
+    {
+        cin.sync();
+        getline (cin, input);
+        {
+            sign = input[0];
+            break;
+        }
+        cout<<"To nie jest znak"<<endl;
+    }
+    return sign;
+}
+

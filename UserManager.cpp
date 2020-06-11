@@ -173,7 +173,6 @@ int UserManager::userLoggingOut()
 {
        idLoggedUser = 0;
     cout<<endl<<"Wylogowales sie"<<endl;
-    cout<<"Id zalogowanego uzytkownika "<<idLoggedUser<<endl;
     system("pause");
     return idLoggedUser;
 

@@ -16,29 +16,31 @@ vector <Income> IncomesXmlFile::loadIncomesFromFile(int idLoggedUser)
     while ( xmlIncomes.FindElem("income") )
     {
 
-         xmlIncomes.IntoElem();
+        xmlIncomes.IntoElem();
 
         xmlIncomes.FindElem("userId");
         userIdFromXmlFile = AuxiliaryMethods::convertStringToInt(xmlIncomes.GetData());
         if (userIdFromXmlFile == idLoggedUser)
         {
-        income.setUserId(idLoggedUser);
+            income.setUserId(idLoggedUser);
 
-        xmlIncomes.FindElem("incomeId");
-        income.setIncomeId(AuxiliaryMethods::convertStringToInt(xmlIncomes.GetData()));
+            xmlIncomes.FindElem("incomeId");
+            income.setIncomeId(AuxiliaryMethods::convertStringToInt(xmlIncomes.GetData()));
 
-        xmlIncomes.FindElem("date");
-        income.setIncomeDate(DateManager::convertDateStrToDate(xmlIncomes.GetData()));
+            xmlIncomes.FindElem("date");
+            income.setIncomeDate(DateManager::convertDateStrToDate(xmlIncomes.GetData()));
 
-        xmlIncomes.FindElem("item");
-        income.setItem(xmlIncomes.GetData());
+            xmlIncomes.FindElem("item");
+            income.setItem(xmlIncomes.GetData());
 
-        xmlIncomes.FindElem("amount");
-        income.setAmount(AuxiliaryMethods::convertStringToFloat(xmlIncomes.GetData()));
+            xmlIncomes.FindElem("amount");
+            income.setAmount(AuxiliaryMethods::convertStringToFloat(xmlIncomes.GetData()));
 
-        xmlIncomes.OutOfElem();
-        incomes.push_back(income);
+            xmlIncomes.OutOfElem();
+            incomes.push_back(income);
         }
+        else
+        xmlIncomes.OutOfElem();
 
     }
     return incomes;
@@ -67,7 +69,7 @@ void IncomesXmlFile::pushOneIncomeToXml(Income income)
 {
     xmlIncomes.AddElem("income");
     xmlIncomes.IntoElem();
-      xmlIncomes.AddElem("userId", income.getUserId());
+    xmlIncomes.AddElem("userId", income.getUserId());
     xmlIncomes.AddElem("incomeId", income.getIncomeId());
     xmlIncomes.AddElem("date",DateManager::convertDateToStr(income.getIncomeDate()));
     xmlIncomes.AddElem("item", income.getItem());

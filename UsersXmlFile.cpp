@@ -84,7 +84,6 @@ void UsersXmlFile::changePasswordInXmlFile(User user)
         {
             xmlUsers.FindChildElem("password");
             xmlUsers.SetChildData( user.getPassword() );
-         //   xmlUsers.AddChildElem("password", );
             break;
         }
     }
