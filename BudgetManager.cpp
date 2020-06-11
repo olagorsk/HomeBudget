@@ -8,17 +8,7 @@ void BudgetManager::addIncome()
     Income income;
     income = getDetailsOfIncome();
     incomes.push_back(income);
-/*
-    for (int i=0; i<incomes.size(); i++)
-    {
-        cout<<"UserId "<<incomes[i].getUserId()<<endl;
-        cout<<"Income Id "<<incomes[i].getIncomeId()<<endl;
-          cout<<"Income date "<<dateManager.convertDateToStr(incomes[i].getIncomeDate())<<endl;
-            cout<<"Income Amount"<<incomes[i].getAmount()<<endl;
-              cout<<"Income Item "<<incomes[i].getItem()<<endl;
-    }
 
-*/
 }
 
 void BudgetManager::addExpense()
@@ -26,17 +16,6 @@ void BudgetManager::addExpense()
     Expense expense;
     expense = getDetailsOfExpense();
     expenses.push_back(expense);
-
-
- for (int i=0; i<expenses.size(); i++)
-    {
-        cout<<"UserId "<<expenses[i].getUserId()<<endl;
-        cout<<"Wydatek Id "<<expenses[i].getExpenseId()<<endl;
-          cout<<"Wydatek date "<<dateManager.convertDateToStr(expenses[i].getExpenseDate())<<endl;
-            cout<<"Wydatek Amount "<<expenses[i].getAmount()<<endl;
-              cout<<"Wydatek Item "<<expenses[i].getItem()<<endl;
-              system("pause");
-    }
 }
 
 Expense BudgetManager::getDetailsOfExpense()
@@ -146,61 +125,7 @@ float  BudgetManager::convertStringToFloat(string amount)
     }
     const char * amountChar = amount.c_str();
     amountF = strtof(amountChar, &endChar);
-    //setprecision(2);
-    cout<<"Przychod wynosi "<<amountF<<endl;
     return amountF;
 
 }
 
-
-
-/*    void AdresatMenedzer::dodajAdresata()
-{
-    Adresat adresat;
-    system("cls");
-    cout << " >>> DODAWANIE NOWEGO ADRESATA <<<" << endl << endl;
-    adresat = podajDaneNowegoAdresata();
-
-    adresaci.push_back(adresat);
-    if(plikZAdresatami.dopiszAdresataDoPliku(adresat))
-        cout<<"Dodano adresata"<<endl;
-    else
-        cout<<"Cos poszlo nie tak"<<endl;
-    system("pause");
-
-}
-
-Adresat AdresatMenedzer::podajDaneNowegoAdresata()
-{
-    Adresat adresat;
-    string imie, nazwisko, numerTelefonu, email, adres;
-
-    adresat.ustawId((plikZAdresatami.pobierzIdOstatniegoAdresata()+1));
-
-    adresat.ustawIdUzytkkownika(ID_ZALOGOWANEGO_UZYTKOWNIKA);
-    cout << "Podaj imie: ";
-    imie = MetodyPomocnicze::wczytajLinie();
-    imie = MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(imie);
-
-    cout << "Podaj nazwisko: ";
-    nazwisko = MetodyPomocnicze::wczytajLinie();
-    nazwisko = MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(nazwisko);
-
-    cout << "Podaj numer telefonu: ";
-    numerTelefonu = MetodyPomocnicze::wczytajLinie();
-
-    cout << "Podaj email: ";
-    email = MetodyPomocnicze::wczytajLinie();
-
-    cout << "Podaj adres: ";
-    adres = MetodyPomocnicze::wczytajLinie();
-
-    adresat.ustawImie(imie);
-    adresat.ustawNazwisko(nazwisko);
-    adresat.ustawNumerTelefonu(numerTelefonu);
-    adresat.ustawEmail(email);
-    adresat.ustawAdres(adres);
-
-    return adresat;
-}
-*/
