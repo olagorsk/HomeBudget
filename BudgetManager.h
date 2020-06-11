@@ -11,12 +11,17 @@
 #include <iomanip>
 #include <cstdlib>
 
+
 #include "DateManager.h"
 #include "Date.h"
 #include "AuxiliaryMethods.h"
 #include "Income.h"
 #include "Expense.h"
 #include "UserManager.h"
+#include "IncomesXmlFile.h"
+#include "ExpensesXmlFile.h"
+
+
 
 
 
@@ -28,18 +33,25 @@ class BudgetManager
     DateManager dateManager;
     vector <Income> incomes;
     vector <Expense> expenses;
+    ExpensesXmlFile expensesXmlFile;
+    IncomesXmlFile incomesXmlFile;
+
+
+
+
     bool checkAmount (string amount);
-    float  convertStringToFloat(string amount);
+
     Income getDetailsOfIncome();
     Expense getDetailsOfExpense();
 
 
 public:
     BudgetManager (int idLoggedUser): ID_LOGGED_USER(idLoggedUser)
-    {};
+    {
+    incomes = incomesXmlFile.loadIncomesFromFile(ID_LOGGED_USER);
+    };
     void addIncome();
     void addExpense();
-
 
 
 

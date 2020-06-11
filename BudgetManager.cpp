@@ -7,6 +7,8 @@ void BudgetManager::addIncome()
 {
     Income income;
     income = getDetailsOfIncome();
+
+    incomesXmlFile.addIncomeToFile(income);
     incomes.push_back(income);
 
 }
@@ -53,7 +55,7 @@ Expense BudgetManager::getDetailsOfExpense()
     }
     while ((checkAmount (amountStr))==false);
 
-    expense.setAmount(convertStringToFloat(amountStr));
+    expense.setAmount(AuxiliaryMethods::convertStringToFloat(amountStr));
     return expense;
 
 }
@@ -94,7 +96,7 @@ Income BudgetManager::getDetailsOfIncome()
     }
     while ((checkAmount (amountStr))==false);
 
-    income.setAmount(convertStringToFloat(amountStr));
+    income.setAmount(AuxiliaryMethods::convertStringToFloat(amountStr));
     return income;
 
 }
@@ -113,19 +115,4 @@ bool BudgetManager::checkAmount (string amount)
     return true;
 }
 
-float  BudgetManager::convertStringToFloat(string amount)
-{
-    float amountF;
-    char* endChar;
-
-    for (int i=0; i<amount.length(); i++)
-    {
-        if (amount[i]==',')
-            amount[i] = '.';
-    }
-    const char * amountChar = amount.c_str();
-    amountF = strtof(amountChar, &endChar);
-    return amountF;
-
-}
 

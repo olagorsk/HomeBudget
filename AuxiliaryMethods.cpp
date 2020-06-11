@@ -36,3 +36,28 @@ string AuxiliaryMethods::conversionIntToStr(int number)
     string str = ss.str();
     return str;
 }
+
+float  AuxiliaryMethods::convertStringToFloat(string amount)
+{
+    float amountF;
+    char* endChar;
+
+    for (int i=0; i<amount.length(); i++)
+    {
+        if (amount[i]==',')
+            amount[i] = '.';
+    }
+    const char * amountChar = amount.c_str();
+    amountF = strtof(amountChar, &endChar);
+    return amountF;
+
+}
+
+string AuxiliaryMethods::convertFloatToStr(float amount)
+{
+stringstream stream;
+stream << fixed << setprecision(2) << amount;
+string amountStr = stream.str();
+return amountStr;
+}
+

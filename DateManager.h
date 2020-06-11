@@ -30,7 +30,7 @@ bool checkMonth (Date oneDate);
 bool checkYear(int year);
 bool  checkLeapYear (int year);
 bool  checkDay(Date oneDate, bool leapYear);
-Date  convertDateStrToDate ();
+
 bool  checkDate(Date oneDate);
 
 
@@ -43,8 +43,9 @@ DateManager()
 
 Date getTodayDate();
 Date getDate();
-string convertDateToStr(Date oneDate);
 
+static string convertDateToStr(Date oneDate);
+static Date  convertDateStrToDate (string date);
 
 
 

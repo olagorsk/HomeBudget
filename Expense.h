@@ -2,8 +2,10 @@
 #define EXPENSE_H
 
 #include <iostream>
-#include "DateManager.h"
+
 #include "Date.h"
+#include "DateManager.h"
+
 
 using namespace std;
 

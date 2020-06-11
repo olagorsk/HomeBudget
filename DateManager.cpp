@@ -18,6 +18,7 @@ Date DateManager::getTodayDate()
 
 Date DateManager::getDate()
 {
+
     Date oneDate;
     do
     {
@@ -27,7 +28,7 @@ Date DateManager::getDate()
             cin>>dateStr;
         }
         while  (checkDateFormat()==false);
-        oneDate = convertDateStrToDate();
+        oneDate = convertDateStrToDate(dateStr);
     }
     while (checkDate(oneDate)==false);
 
@@ -36,6 +37,7 @@ Date DateManager::getDate()
 
 bool DateManager::checkDateFormat()
 {
+
     if (dateStr[4]!='-'||dateStr[7]!='-')
     {
         cout<<"Niepoprawny format daty, wpisz date w formacie rrrr-mm-dd"<<endl;
@@ -141,9 +143,10 @@ bool  DateManager::checkDay(Date oneDate, bool leapYear)
     return true;
 }
 
-Date  DateManager::convertDateStrToDate ()
+Date  DateManager::convertDateStrToDate (string date)
 {
     Date oneDate;
+string dateStr;
     string dayFromDate = "", monthFromDate = "", yearFromDate = "";
 
     if (dateStr[8] == '0')
@@ -177,7 +180,7 @@ bool  DateManager::checkDate(Date oneDate)
 
 string DateManager::convertDateToStr(Date oneDate)
 {
-
+    string dateStr;
     string year, month, day;
     year = AuxiliaryMethods::conversionIntToStr(oneDate.getYear());
     month = AuxiliaryMethods::conversionIntToStr(oneDate.getMonth());

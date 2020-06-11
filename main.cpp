@@ -22,10 +22,10 @@ int main()
       BudgetManager budgetManager(14);
 
      budgetManager.addIncome();
+      budgetManager.addIncome();
+       budgetManager.addIncome();
 
-       budgetManager.addExpense();
-         budgetManager.addExpense();
-           budgetManager.addExpense();
+      // budgetManager.addExpense();
 
 
 }
