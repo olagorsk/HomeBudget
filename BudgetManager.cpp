@@ -7,7 +7,6 @@ void BudgetManager::addIncome()
 {
     Income income;
     income = getDetailsOfIncome();
-
     incomesXmlFile.addIncomeToFile(income);
     incomes.push_back(income);
 
@@ -17,6 +16,7 @@ void BudgetManager::addExpense()
 {
     Expense expense;
     expense = getDetailsOfExpense();
+     expensesXmlFile.addExpenseToFile(expense);
     expenses.push_back(expense);
 }
 

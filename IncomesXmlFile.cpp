@@ -19,13 +19,13 @@ vector <Income> IncomesXmlFile::loadIncomesFromFile(int idLoggedUser)
          xmlIncomes.IntoElem();
 
         xmlIncomes.FindElem("userId");
-        userIdFromXmlFile = AuxiliaryMethods::conversionStringToInt(xmlIncomes.GetData());
+        userIdFromXmlFile = AuxiliaryMethods::convertStringToInt(xmlIncomes.GetData());
         if (userIdFromXmlFile == idLoggedUser)
         {
         income.setUserId(idLoggedUser);
 
         xmlIncomes.FindElem("incomeId");
-        income.setIncomeId(AuxiliaryMethods::conversionStringToInt(xmlIncomes.GetData()));
+        income.setIncomeId(AuxiliaryMethods::convertStringToInt(xmlIncomes.GetData()));
 
         xmlIncomes.FindElem("date");
         income.setIncomeDate(DateManager::convertDateStrToDate(xmlIncomes.GetData()));
@@ -67,8 +67,8 @@ void IncomesXmlFile::pushOneIncomeToXml(Income income)
 {
     xmlIncomes.AddElem("income");
     xmlIncomes.IntoElem();
+      xmlIncomes.AddElem("userId", income.getUserId());
     xmlIncomes.AddElem("incomeId", income.getIncomeId());
-    xmlIncomes.AddElem("userId", income.getUserId());
     xmlIncomes.AddElem("date",DateManager::convertDateToStr(income.getIncomeDate()));
     xmlIncomes.AddElem("item", income.getItem());
     xmlIncomes.AddElem("amount", AuxiliaryMethods::convertFloatToStr(income.getAmount()));

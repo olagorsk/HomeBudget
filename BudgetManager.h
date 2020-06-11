@@ -49,6 +49,7 @@ public:
     BudgetManager (int idLoggedUser): ID_LOGGED_USER(idLoggedUser)
     {
     incomes = incomesXmlFile.loadIncomesFromFile(ID_LOGGED_USER);
+    expenses = expensesXmlFile.loadExpensesFromFile(ID_LOGGED_USER);
     };
     void addIncome();
     void addExpense();

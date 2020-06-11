@@ -19,13 +19,13 @@ int _main()
 
 int main()
 {
-      BudgetManager budgetManager(14);
+      BudgetManager budgetManager(10);
 
      budgetManager.addIncome();
       budgetManager.addIncome();
-       budgetManager.addIncome();
 
-      // budgetManager.addExpense();
+
+       budgetManager.addExpense();
 
 
 }

@@ -45,7 +45,7 @@ Date getTodayDate();
 Date getDate();
 
 static string convertDateToStr(Date oneDate);
-static Date  convertDateStrToDate (string date);
+ static Date  convertDateStrToDate(string dateStr);
 
 
 

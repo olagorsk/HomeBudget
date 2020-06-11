@@ -143,10 +143,10 @@ bool  DateManager::checkDay(Date oneDate, bool leapYear)
     return true;
 }
 
-Date  DateManager::convertDateStrToDate (string date)
+Date  DateManager::convertDateStrToDate(string dateStr)
 {
     Date oneDate;
-string dateStr;
+
     string dayFromDate = "", monthFromDate = "", yearFromDate = "";
 
     if (dateStr[8] == '0')
@@ -180,11 +180,10 @@ bool  DateManager::checkDate(Date oneDate)
 
 string DateManager::convertDateToStr(Date oneDate)
 {
-    string dateStr;
-    string year, month, day;
-    year = AuxiliaryMethods::conversionIntToStr(oneDate.getYear());
-    month = AuxiliaryMethods::conversionIntToStr(oneDate.getMonth());
-    day = AuxiliaryMethods::conversionIntToStr(oneDate.getDay());
+    string year, month, day, dateStr;
+    year = AuxiliaryMethods::convertIntToStr(oneDate.getYear());
+    month = AuxiliaryMethods::convertIntToStr(oneDate.getMonth());
+    day = AuxiliaryMethods::convertIntToStr(oneDate.getDay());
     if (month.length()==1)
         month = '0'+ month;
 

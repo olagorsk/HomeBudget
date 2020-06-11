@@ -3,91 +3,75 @@
 
 using namespace std;
 
-/*
-vector <User> UsersXmlFile::loadUsersFromFile()
+
+vector <Expense> ExpensesXmlFile::loadExpensesFromFile(int idLoggedUser)
 {
-    User user;
-    vector <User> users;
+    Expense expense;
+    vector <Expense> expenses;
+    int userIdFromXmlFile;
 
-    xmlUsers.Load(USERS_FILE_NAME);
-    xmlUsers.ResetPos();
+    xmlExpenses.Load("d:/OLA/programowanie/KURS/20200429_program_HomeBudget/HomeBudget/expenses.xml");
+    xmlExpenses.ResetPos();
 
-    while ( xmlUsers.FindElem("user") )
+    while ( xmlExpenses.FindElem("expense") )
     {
-        xmlUsers.IntoElem();
-        xmlUsers.FindElem("userId");
-        user.setId(AuxiliaryMethods::conversionStringToInt(xmlUsers.GetData()));
 
-        xmlUsers.FindElem("login");
-        user.setLogin(xmlUsers.GetData());
+         xmlExpenses.IntoElem();
 
-        xmlUsers.FindElem("password");
-        user.setPassword(xmlUsers.GetData());
-
-        xmlUsers.FindElem("name");
-        user.setName(xmlUsers.GetData());
-
-        xmlUsers.FindElem("surname");
-        user.setSurname(xmlUsers.GetData());
-
-        xmlUsers.OutOfElem();
-        users.push_back(user);
-    }
-    return users;
-}
-
-void UsersXmlFile::addUserToFile(User user)
-{
-
-    xmlUsers.Load(USERS_FILE_NAME);
-
-    if (xmlUsers.FindElem("user")==false)
-    {
-        xmlUsers.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
-    }
-    xmlUsers.ResetPos();
-    xmlUsers.FindElem();
-    while (xmlUsers.FindElem("user") );
-    xmlUsers.OutOfElem();
-
-    pushOneUserToXml(user);
-    xmlUsers.Save(USERS_FILE_NAME);
-}
-
-
-void UsersXmlFile::pushOneUserToXml(User user)
-{
-    xmlUsers.AddElem("user");
-    xmlUsers.IntoElem();
-    xmlUsers.AddElem("userId", user.getId());
-    xmlUsers.AddElem("login", user.getLogin());
-    xmlUsers.AddElem("password",user.getPassword());
-    xmlUsers.AddElem("name", user.getName());
-    xmlUsers.AddElem("surname", user.getSurname());
-    xmlUsers.OutOfElem();
-}
-
-
-
-
-void UsersXmlFile::changePasswordInXmlFile(User user)
-{
-    string idLoggedUserStr;
-    idLoggedUserStr = AuxiliaryMethods::conversionIntToStr(user.getId());
-
-    xmlUsers.Load(USERS_FILE_NAME);
-    xmlUsers.ResetPos();
-    while (xmlUsers.FindElem("user") )
-    {
-        xmlUsers.FindChildElem();
-        if (xmlUsers.GetChildData()==idLoggedUserStr)
+        xmlExpenses.FindElem("userId");
+        userIdFromXmlFile = AuxiliaryMethods::convertStringToInt(xmlExpenses.GetData());
+        if (userIdFromXmlFile == idLoggedUser)
         {
-            xmlUsers.FindChildElem("password");
-            xmlUsers.SetChildData( user.getPassword() );
-         //   xmlUsers.AddChildElem("password", );
-            break;
+        expense.setUserId(idLoggedUser);
+
+        xmlExpenses.FindElem("expenseId");
+        expense.setExpenseId(AuxiliaryMethods::convertStringToInt(xmlExpenses.GetData()));
+
+        xmlExpenses.FindElem("date");
+        expense.setExpenseDate(DateManager::convertDateStrToDate(xmlExpenses.GetData()));
+
+        xmlExpenses.FindElem("item");
+        expense.setItem(xmlExpenses.GetData());
+
+        xmlExpenses.FindElem("amount");
+        expense.setAmount(AuxiliaryMethods::convertStringToFloat(xmlExpenses.GetData()));
+
+        xmlExpenses.OutOfElem();
+        expenses.push_back(expense);
         }
+
     }
-    xmlUsers.Save(USERS_FILE_NAME);
+    return expenses;
 }
-*/
+
+void ExpensesXmlFile::addExpenseToFile(Expense expense)
+{
+
+    xmlExpenses.Load("d:/OLA/programowanie/KURS/20200429_program_HomeBudget/HomeBudget/expenses.xml");
+
+    if (xmlExpenses.FindElem("expense")==false)
+    {
+        xmlExpenses.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
+    }
+    xmlExpenses.ResetPos();
+    xmlExpenses.FindElem();
+    while (xmlExpenses.FindElem("expense") );
+    xmlExpenses.OutOfElem();
+
+    pushOneExpenseToXml(expense);
+    xmlExpenses.Save("d:/OLA/programowanie/KURS/20200429_program_HomeBudget/HomeBudget/expenses.xml");
+}
+
+
+void ExpensesXmlFile::pushOneExpenseToXml(Expense expense)
+{
+    xmlExpenses.AddElem("expense");
+    xmlExpenses.IntoElem();
+    xmlExpenses.AddElem("userId", expense.getUserId());
+    xmlExpenses.AddElem("expenseId", expense.getExpenseId());
+    xmlExpenses.AddElem("date",DateManager::convertDateToStr(expense.getExpenseDate()));
+    xmlExpenses.AddElem("item", expense.getItem());
+    xmlExpenses.AddElem("amount", AuxiliaryMethods::convertFloatToStr(expense.getAmount()));
+    xmlExpenses.OutOfElem();
+}
+

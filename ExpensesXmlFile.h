@@ -8,7 +8,9 @@
 #include <sstream>
 
 
+#include "Markup.h"
 #include "AuxiliaryMethods.h"
+#include "DateManager.h"
 #include "Expense.h"
 
 
@@ -18,17 +20,14 @@ class ExpensesXmlFile
 {
   string expensesXmlFileName;
     CMarkup xmlExpenses;
+   void pushOneExpenseToXml(Expense expense);
 
-
-  //  void pushOneUserToXml(User oneUser);
 
   public:
 
 
       void addExpenseToFile(Expense expense);
     vector <Expense> loadExpensesFromFile(int idLoggedUser);
-
-
 
 };
 
