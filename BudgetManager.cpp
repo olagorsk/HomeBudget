@@ -115,7 +115,7 @@ bool BudgetManager::checkAmount (string amount)
     return true;
 }
 
-    void BudgetManager::createBalance()
+    void BudgetManager::currentMonthBalance()
     {
 
    if ((incomes.empty() == false)|| (expenses.empty() == false))
@@ -130,5 +130,36 @@ bool BudgetManager::checkAmount (string amount)
     }
 
     }
+
+     void BudgetManager::previousMonthBalance()
+     {
+         if ((incomes.empty() == false)|| (expenses.empty() == false))
+    {
+        balanceManager = new BalanceManager(incomes, expenses, dateManager.getTodayDate());
+         balanceManager->previousMonthBalance();
+    }
+    else
+    {
+        cout<<"Nie wprowadziles jeszcze zadnych przychodow i wydatkow"<<endl;
+        Sleep(1500);
+    }
+     }
+
+        void BudgetManager::givenDatesBalance()
+        {
+             if ((incomes.empty() == false)|| (expenses.empty() == false))
+    {
+        Date firstDate = dateManager.getDate();
+        Date secondDate = dateManager.getDate();
+        balanceManager = new BalanceManager(incomes, expenses, dateManager.getTodayDate());
+         balanceManager->givenDatesBalance(firstDate, secondDate);
+    }
+    else
+    {
+        cout<<"Nie wprowadziles jeszcze zadnych przychodow i wydatkow"<<endl;
+        Sleep(1500);
+    }
+        }
+
 
 

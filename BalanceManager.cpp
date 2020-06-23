@@ -74,6 +74,20 @@ vector <Expense> BalanceManager::sortExpenses()
 }
 
 
+void BalanceManager::printIncome(Income income)
+{
+    cout<<"Wartosc: "<<AuxiliaryMethods::convertFloatToStr(income.getAmount())<<" zl"<<endl;
+    cout << "Data: "<<AuxiliaryMethods::convertDateToStr(income.getIncomeDate())<<endl;
+    cout<<"Rodzaj: "<<income.getItem()<<endl<<endl;
+}
+
+void BalanceManager::printExpense(Expense expense)
+{
+    cout<<"Wartosc: "<<AuxiliaryMethods::convertFloatToStr(expense.getAmount())<<" zl"<<endl;
+    cout << "Data: "<<AuxiliaryMethods::convertDateToStr(expense.getExpenseDate())<<endl;
+    cout<<"Rodzaj: "<<expense.getItem()<<endl<<endl;
+}
+
 void BalanceManager::currentMonthBalance()
 {
     system("cls");
@@ -85,14 +99,10 @@ void BalanceManager::currentMonthBalance()
         for (int i=0; i<incomes.size(); i++)
         {
             if ((incomes[i].getIncomeDate().getYear()==todayDate.getYear()&&(incomes[i].getIncomeDate().getMonth()==todayDate.getMonth())))
-        {
-             cout<<"Wartosc: "<<AuxiliaryMethods::convertFloatToStr(incomes[i].getAmount())<<" zl"<<endl;
-            cout << "Data: "<<AuxiliaryMethods::convertDateToStr(incomes[i].getIncomeDate())<<endl;
-                cout<<"Rodzaj: "<<incomes[i].getItem()<<endl<<endl;
-
+            {
+                printIncome(incomes[i]);
                 sumOfIncomes+=incomes[i].getAmount();
             }
-
         }
     }
 
@@ -105,20 +115,138 @@ void BalanceManager::currentMonthBalance()
         {
             if ((expenses[i].getExpenseDate().getYear()==todayDate.getYear())&&(expenses[i].getExpenseDate().getMonth()==todayDate.getMonth()))
             {
-                cout<<"Wartosc: "<<AuxiliaryMethods::convertFloatToStr(expenses[i].getAmount())<<" zl"<<endl;
-                cout << "Data: "<<AuxiliaryMethods::convertDateToStr(expenses[i].getExpenseDate())<<endl;
-                cout<<"Rodzaj: "<<expenses[i].getItem()<<endl<<endl;
-
+                printExpense(expenses[i]);
                 sumOfExpenses+=expenses[i].getAmount();
             }
-
         }
     }
     cout<<endl<<"Suma przychodow wynosi: "<<AuxiliaryMethods::convertFloatToStr(sumOfIncomes)<<" zl"<<endl;
     cout<<"Suma wydatkow wynosi: "<<AuxiliaryMethods::convertFloatToStr(sumOfExpenses)<<" zl"<<endl;
-    cout<<"Roznica przychody - wydatki: "<<AuxiliaryMethods::convertFloatToStr(sumOfIncomes - sumOfExpenses)<< "zl"<<endl;
-
+    cout<<"Roznica przychody - wydatki: "<<AuxiliaryMethods::convertFloatToStr(sumOfIncomes - sumOfExpenses)<< "zl"<<endl<<endl;
 
     system("pause");
+}
+
+void BalanceManager::previousMonthBalance()
+{
+ system("cls");
+    float sumOfIncomes = 0, sumOfExpenses = 0;
+int previousMonth = 0;
+int year;
+
+if (todayDate.getMonth()==1)
+    {
+        previousMonth = 12;
+        year = todayDate.getYear()-1;
+    }
+else
+{
+    previousMonth = todayDate.getMonth()-1;
+   year = todayDate.getYear();
+}
+
+    cout<<"Przychody w poprzednim miesiacu"<<endl<<"---------------------------"<<endl;
+    if (incomes.empty() == false)
+    {
+        for (int i=0; i<incomes.size(); i++)
+        {
+            if ((incomes[i].getIncomeDate().getYear()==year&&(incomes[i].getIncomeDate().getMonth()==previousMonth)))
+            {
+                printIncome(incomes[i]);
+                sumOfIncomes+=incomes[i].getAmount();
+            }
+        }
+    }
+
+
+    cout<<endl<<"Wydatki w poprzednim miesiacu"<<endl<<"---------------------------"<<endl;
+
+    if (expenses.empty() == false)
+    {
+        for (int i=0; i<expenses.size(); i++)
+        {
+            if ((expenses[i].getExpenseDate().getYear()==year)&&(expenses[i].getExpenseDate().getMonth()==previousMonth))
+            {
+                printExpense(expenses[i]);
+                sumOfExpenses+=expenses[i].getAmount();
+            }
+        }
+    }
+    cout<<endl<<"Suma przychodow wynosi: "<<AuxiliaryMethods::convertFloatToStr(sumOfIncomes)<<" zl"<<endl;
+    cout<<"Suma wydatkow wynosi: "<<AuxiliaryMethods::convertFloatToStr(sumOfExpenses)<<" zl"<<endl;
+    cout<<"Roznica przychody - wydatki: "<<AuxiliaryMethods::convertFloatToStr(sumOfIncomes - sumOfExpenses)<< "zl"<<endl<<endl;
+
+    system("pause");
+}
+
+void BalanceManager::givenDatesBalance (Date firstDate, Date secondDate)
+{
+   system("cls");
+    float sumOfIncomes = 0, sumOfExpenses = 0;
+
+    vector<Income> selectedIncomes;
+    Income selectIncome;
+
+    cout<<"Przychody w zadanym okresie"<<endl<<"---------------------------"<<endl;
+    if (incomes.empty() == false)
+    {
+        for (int i=0; i<incomes.size(); i++)
+        {
+            if ((incomes[i].getIncomeDate().getYear()==firstDate.getYear()))
+                if (incomes[i].getIncomeDate().getMonth()==firstDate.getMonth())
+                    if(incomes[i].getIncomeDate().getDay()>=firstDate.getDay())
+            {
+                selectIncome.setIncomeDate(incomes[i].getIncomeDate)
+                 selectedIncomes.push_back();//DOKOÑCZYÆ
+            }
+
+
+            if ((incomes[i].getIncomeDate().getYear()==firstDate.getYear()))
+                if((incomes[i].getIncomeDate().getMonth()>firstDate.getMonth))
+                 selectedIncomes.push_back();
+
+                if ((incomes[i].getIncomeDate().getYear()>firstDate.getYear()))
+                       selectedIncomes.push_back();
+        }
+
+       for (int i=0; i<selectedIncomes.size(); i++)
+        {
+            if ((selectedIncomes[i].getIncomeDate().getYear()==secondDate.getYear())
+                if (selectedIncomes[i].getIncomeDate().getMonth()==secondDate.getMonth())
+                    if(selectedIncomes[i].getIncomeDate().getDay()<=secondDate.getDay())
+                selectedIncomes.push_back();
+
+            if ((incomes[i].getIncomeDate().getYear()==secondDate.getYear()))
+                if((incomes[i].getIncomeDate().getMonth()<secondDate.getMonth))
+                 selectedIncomes.push_back();
+
+                if ((incomes[i].getIncomeDate().getYear()<secondDate.getYear()))
+                       selectedIncomes.push_back();
+        }
+         printIncome(selectedIncomes[i]);
+                sumOfIncomes+=selectedIncomes[i].getAmount();
+
+
+    }
+
+/*
+    cout<<endl<<"Wydatki w biezacym miesiacu"<<endl<<"---------------------------"<<endl;
+
+    if (expenses.empty() == false)
+    {
+        for (int i=0; i<expenses.size(); i++)
+        {
+            if ((expenses[i].getExpenseDate().getYear()==todayDate.getYear())&&(expenses[i].getExpenseDate().getMonth()==todayDate.getMonth()))
+            {
+                printExpense(expenses[i]);
+                sumOfExpenses+=expenses[i].getAmount();
+            }
+        }
+    }
+    cout<<endl<<"Suma przychodow wynosi: "<<AuxiliaryMethods::convertFloatToStr(sumOfIncomes)<<" zl"<<endl;
+    cout<<"Suma wydatkow wynosi: "<<AuxiliaryMethods::convertFloatToStr(sumOfExpenses)<<" zl"<<endl;
+    cout<<"Roznica przychody - wydatki: "<<AuxiliaryMethods::convertFloatToStr(sumOfIncomes - sumOfExpenses)<< "zl"<<endl<<endl;
+
+    system("pause");*/
 }
 

@@ -59,7 +59,10 @@ public:
 
     void addIncome();
     void addExpense();
-    void createBalance();
+    void currentMonthBalance();
+    void previousMonthBalance();
+       void givenDatesBalance();
+
 
 };
 

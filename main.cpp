@@ -46,12 +46,12 @@ int main()
                homeBudget.addExpense();
                 break;
             case '3':
-                homeBudget.createBalance();
+                homeBudget.currentMonthBalance();
+                break;
+            case '4':
+                homeBudget.previousMonthBalance();
                 break;
                 /*
-            case '4':
-                ksiazkaAdresowa.wyswietlWszystkichAdresatow();
-                break;
             case '5':
                 ksiazkaAdresowa.usunAdresata();
                 break;*/

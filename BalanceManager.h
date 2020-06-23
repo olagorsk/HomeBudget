@@ -35,6 +35,10 @@ class BalanceManager
     vector<Income> sortIncomes();
     vector <Expense> sortExpenses();
 
+    void printIncome(Income income);
+    void printExpense(Expense expense);
+
+
 public:
 
     BalanceManager (vector <Income> unsortedIncomes, vector <Expense> unsortedExpenses, Date date):incomes(unsortedIncomes), expenses(unsortedExpenses), todayDate(date)
@@ -49,6 +53,8 @@ public:
     }
 
     void currentMonthBalance();
+    void previousMonthBalance();
+    void givenDatesBalance(Date firstDate, Date secondDate);
 
 };
 
