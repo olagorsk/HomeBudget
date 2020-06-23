@@ -42,9 +42,9 @@ int HomeBudget::userLoggingOut()
     userManager.userLoggingOut();
 }
 
-void HomeBudget::currentMonthBalance()
+void HomeBudget::createBalance()
 {
-    budgetManager->currentMonthBalance();
+    budgetManager->createBalance();
 }
 
 

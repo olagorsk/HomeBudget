@@ -14,9 +14,6 @@ class HomeBudget
     UserManager userManager;
     BudgetManager *budgetManager;
 
-
-
-
 public:
     HomeBudget(string usersFileName):userManager(usersFileName)
      {
@@ -37,7 +34,7 @@ void addIncome();
 void addExpense();
 void changePasswordOfLoggedUser();
 int userLoggingOut();
-void currentMonthBalance();
+void createBalance();
 
 
 };
