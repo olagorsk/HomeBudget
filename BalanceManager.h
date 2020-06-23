@@ -11,7 +11,7 @@
 #include "Income.h"
 #include "Expense.h"
 #include "AuxiliaryMethods.h"
-#include "DateManager.h"
+#include "Date.h"
 
 
 using namespace std;
@@ -21,6 +21,7 @@ class BalanceManager
 
     vector <Income> incomes;
     vector <Expense> expenses;
+    Date todayDate;
 
     struct IncomesSortYear;
     struct IncomesSortMonth;
@@ -34,15 +35,18 @@ class BalanceManager
     vector<Income> sortIncomes();
     vector <Expense> sortExpenses();
 
-    DateManager dateManager;
-
 public:
 
-    BalanceManager (vector <Income> unsortedIncomes, vector <Expense> unsortedExpenses):incomes(unsortedIncomes), expenses(unsortedExpenses)
+    BalanceManager (vector <Income> unsortedIncomes, vector <Expense> unsortedExpenses, Date date):incomes(unsortedIncomes), expenses(unsortedExpenses), todayDate(date)
     {
         incomes = sortIncomes();
         expenses = sortExpenses();
     };
+    ~BalanceManager()
+    {
+        incomes.clear();
+        expenses.clear();
+    }
 
     void currentMonthBalance();
 

@@ -120,9 +120,15 @@ bool BudgetManager::checkAmount (string amount)
 
    if ((incomes.empty() == false)|| (expenses.empty() == false))
     {
-        balanceManager = new BalanceManager(incomes, expenses);
+        balanceManager = new BalanceManager(incomes, expenses, dateManager.getTodayDate());
+         balanceManager->currentMonthBalance();
     }
-    balanceManager->currentMonthBalance();
+    else
+    {
+        cout<<"Nie wprowadziles jeszcze zadnych przychodow i wydatkow"<<endl;
+        Sleep(1500);
+    }
+
     }
 
 

@@ -77,39 +77,43 @@ vector <Expense> BalanceManager::sortExpenses()
 void BalanceManager::currentMonthBalance()
 {
     system("cls");
-   // incomes = sortIncomes();
-  //  expenses = sortExpense();
-    float sumOfIncomes, sumOfExpenses;
+    float sumOfIncomes = 0, sumOfExpenses = 0;
 
     cout<<"Przychody w biezacym miesiacu"<<endl<<"---------------------------"<<endl;
-    for (int i=0; i<incomes.size(); i++)
+    if (incomes.empty() == false)
     {
-        if ((incomes[i].getIncomeDate().getYear()==dateManager.getTodayDate().getYear())&&(incomes[i].getIncomeDate().getMonth()==dateManager.getTodayDate().getMonth()))
+        for (int i=0; i<incomes.size(); i++)
         {
+            if ((incomes[i].getIncomeDate().getYear()==todayDate.getYear()&&(incomes[i].getIncomeDate().getMonth()==todayDate.getMonth())))
+        {
+             cout<<"Wartosc: "<<AuxiliaryMethods::convertFloatToStr(incomes[i].getAmount())<<" zl"<<endl;
             cout << "Data: "<<AuxiliaryMethods::convertDateToStr(incomes[i].getIncomeDate())<<endl;
-            cout<<"Rodzaj: "<<incomes[i].getItem()<<endl;
-            cout<<"Wartosc: "<<AuxiliaryMethods::convertFloatToStr(incomes[i].getAmount())<<" zl"<<endl;
-            sumOfIncomes+=incomes[i].getAmount();
-        }
+                cout<<"Rodzaj: "<<incomes[i].getItem()<<endl<<endl;
 
+                sumOfIncomes+=incomes[i].getAmount();
+            }
+
+        }
     }
+
 
     cout<<endl<<"Wydatki w biezacym miesiacu"<<endl<<"---------------------------"<<endl;
 
-    for (int i=0; i<incomes.size(); i++)
+    if (expenses.empty() == false)
     {
-        if ((expenses[i].getExpenseDate().getYear()==dateManager.getTodayDate().getYear())&&(expenses[i].getExpenseDate().getMonth()==dateManager.getTodayDate().getMonth()))
+        for (int i=0; i<expenses.size(); i++)
         {
-            //   cout << "UserId: "<<expenses[i].getUserId()<<endl;
-            //     cout << "Wydatek Id: "<<expenses[i].getExpenseId()<<endl;
-            cout << "Data: "<<AuxiliaryMethods::convertDateToStr(expenses[i].getExpenseDate())<<endl;
-            cout<<"Rodzaj: "<<expenses[i].getItem()<<endl;
-            cout<<"Wartosc: "<<AuxiliaryMethods::convertFloatToStr(expenses[i].getAmount())<<" zl"<<endl;
-            sumOfExpenses+=expenses[i].getAmount();
+            if ((expenses[i].getExpenseDate().getYear()==todayDate.getYear())&&(expenses[i].getExpenseDate().getMonth()==todayDate.getMonth()))
+            {
+                cout<<"Wartosc: "<<AuxiliaryMethods::convertFloatToStr(expenses[i].getAmount())<<" zl"<<endl;
+                cout << "Data: "<<AuxiliaryMethods::convertDateToStr(expenses[i].getExpenseDate())<<endl;
+                cout<<"Rodzaj: "<<expenses[i].getItem()<<endl<<endl;
+
+                sumOfExpenses+=expenses[i].getAmount();
+            }
+
         }
-
     }
-
     cout<<endl<<"Suma przychodow wynosi: "<<AuxiliaryMethods::convertFloatToStr(sumOfIncomes)<<" zl"<<endl;
     cout<<"Suma wydatkow wynosi: "<<AuxiliaryMethods::convertFloatToStr(sumOfExpenses)<<" zl"<<endl;
     cout<<"Roznica przychody - wydatki: "<<AuxiliaryMethods::convertFloatToStr(sumOfIncomes - sumOfExpenses)<< "zl"<<endl;
