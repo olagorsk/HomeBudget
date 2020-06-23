@@ -5,6 +5,7 @@
 
 #include "UserManager.h"
 #include "BudgetManager.h"
+#include "AuxiliaryMethods.h"
 
 using namespace std;
 
@@ -29,7 +30,14 @@ public:
     };
     void userRegistration();
     int userLogging();
-
+bool isUserLogged();
+char selectOptionFromUserMenu();
+char selectOptionFromBudgetMenu();
+void addIncome();
+void addExpense();
+void changePasswordOfLoggedUser();
+int userLoggingOut();
+void currentMonthBalance();
 
 
 };

@@ -4,29 +4,68 @@
 
 using namespace std;
 
-int _main()
-{
-   HomeBudget homeBudget ("users.xml");
-   homeBudget.userRegistration();
-   homeBudget.userRegistration();
- homeBudget.userRegistration();
-   //homeBudget.userRegistration();
-  // int idTEST = homeBudget.userLogging();
-  // cout<<"Id zalogowanego uzytkownika "<< idTEST<<endl;
-}
-
-#include "BudgetManager.h"
-
 int main()
 {
-      BudgetManager budgetManager(14);
 
-     budgetManager.addIncome();
+   HomeBudget homeBudget("users.xml");
+    char choice;
 
-       budgetManager.addExpense();
-         budgetManager.addExpense();
-           budgetManager.addExpense();
+    while(true)
+    {
+        if (homeBudget.isUserLogged()==false)
+        {
 
+           choice = homeBudget.selectOptionFromUserMenu();
+            switch(choice)
+            {
+            case '1':
+                homeBudget.userRegistration();
+                break;
+            case '2':
+                homeBudget.userLogging();
+                break;
+            case '9':
+                exit(0);
+                break;
+            default:
+                cout<<endl<<"Nie ma takiej opcji w menu"<<endl;
+                system("pause");
+                break;
+            }
+        }
 
+        else
+        {
+            choice = homeBudget.selectOptionFromBudgetMenu();
+            switch(choice)
+            {
+            case '1':
+                homeBudget.addIncome();
+                break;
+            case '2':
+               homeBudget.addExpense();
+                break;
+            case '3':
+                homeBudget.currentMonthBalance();
+                break;
+                /*
+            case '4':
+                ksiazkaAdresowa.wyswietlWszystkichAdresatow();
+                break;
+            case '5':
+                ksiazkaAdresowa.usunAdresata();
+                break;*/
+            case '6':
+                homeBudget.changePasswordOfLoggedUser();
+                break;
+            case '7':
+                homeBudget.userLoggingOut();
+                break;
+
+            }
+        }
+
+    }
+
+    return 0;
 }
-

@@ -16,7 +16,7 @@ vector <User> UsersXmlFile::loadUsersFromFile()
     {
         xmlUsers.IntoElem();
         xmlUsers.FindElem("userId");
-        user.setId(AuxiliaryMethods::conversionStringToInt(xmlUsers.GetData()));
+        user.setId(AuxiliaryMethods::convertStringToInt(xmlUsers.GetData()));
 
         xmlUsers.FindElem("login");
         user.setLogin(xmlUsers.GetData());
@@ -73,7 +73,7 @@ void UsersXmlFile::pushOneUserToXml(User user)
 void UsersXmlFile::changePasswordInXmlFile(User user)
 {
     string idLoggedUserStr;
-    idLoggedUserStr = AuxiliaryMethods::conversionIntToStr(user.getId());
+    idLoggedUserStr = AuxiliaryMethods::convertIntToStr(user.getId());
 
     xmlUsers.Load(USERS_FILE_NAME);
     xmlUsers.ResetPos();
@@ -84,7 +84,6 @@ void UsersXmlFile::changePasswordInXmlFile(User user)
         {
             xmlUsers.FindChildElem("password");
             xmlUsers.SetChildData( user.getPassword() );
-         //   xmlUsers.AddChildElem("password", );
             break;
         }
     }

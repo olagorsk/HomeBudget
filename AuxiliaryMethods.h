@@ -8,6 +8,9 @@
 #include <vector>
 #include <algorithm>
 #include <sstream>
+#include <iomanip>
+
+#include "Date.h"
 
 using namespace std;
 
@@ -16,8 +19,18 @@ class AuxiliaryMethods
 public:
     static string replaceFirstLetterToUpperCaseRemainingToLowerCase(string text);
     static string getLine();
-    static int conversionStringToInt(string number);
-    static string conversionIntToStr(int number);
+    static int convertStringToInt(string number);
+    static string convertIntToStr(int number);
+
+
+    static string convertFloatToStr(float amount);
+    static float  convertStringToFloat(string amount);
+    static char getChar();
+
+       static string convertDateToStr(Date oneDate);
+    static Date convertDateStrToDate(string dateStr);
+
+
 };
 
 #endif
