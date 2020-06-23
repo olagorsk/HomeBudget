@@ -37,6 +37,7 @@ void addIncome();
 void addExpense();
 void changePasswordOfLoggedUser();
 int userLoggingOut();
+void currentMonthBalance();
 
 
 };

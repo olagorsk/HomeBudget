@@ -44,6 +44,18 @@ class BudgetManager
     Income getDetailsOfIncome();
     Expense getDetailsOfExpense();
 
+      struct IncomesSortYear;
+      struct IncomesSortMonth;
+       struct IncomesSortDay;
+
+        struct ExpensesSortYear;
+       struct ExpensesSortMonth;
+       struct ExpensesSortDay;
+
+
+       vector<Income> sortIncomes();
+       vector <Expense> sortExpense();
+
 
 public:
     BudgetManager (int idLoggedUser): ID_LOGGED_USER(idLoggedUser)
@@ -53,6 +65,7 @@ public:
     };
     void addIncome();
     void addExpense();
+   void currentMonthBalance();
 
 
 

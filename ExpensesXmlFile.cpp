@@ -28,7 +28,7 @@ vector <Expense> ExpensesXmlFile::loadExpensesFromFile(int idLoggedUser)
         expense.setExpenseId(AuxiliaryMethods::convertStringToInt(xmlExpenses.GetData()));
 
         xmlExpenses.FindElem("date");
-        expense.setExpenseDate(DateManager::convertDateStrToDate(xmlExpenses.GetData()));
+        expense.setExpenseDate(AuxiliaryMethods::convertDateStrToDate(xmlExpenses.GetData()));
 
         xmlExpenses.FindElem("item");
         expense.setItem(xmlExpenses.GetData());
@@ -71,7 +71,7 @@ void ExpensesXmlFile::pushOneExpenseToXml(Expense expense)
     xmlExpenses.IntoElem();
     xmlExpenses.AddElem("userId", expense.getUserId());
     xmlExpenses.AddElem("expenseId", expense.getExpenseId());
-    xmlExpenses.AddElem("date",DateManager::convertDateToStr(expense.getExpenseDate()));
+    xmlExpenses.AddElem("date",AuxiliaryMethods::convertDateToStr(expense.getExpenseDate()));
     xmlExpenses.AddElem("item", expense.getItem());
     xmlExpenses.AddElem("amount", AuxiliaryMethods::convertFloatToStr(expense.getAmount()));
     xmlExpenses.OutOfElem();

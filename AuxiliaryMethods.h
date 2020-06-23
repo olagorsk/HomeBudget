@@ -10,6 +10,8 @@
 #include <sstream>
 #include <iomanip>
 
+#include "Date.h"
+
 using namespace std;
 
 class AuxiliaryMethods
@@ -23,7 +25,10 @@ public:
 
     static string convertFloatToStr(float amount);
     static float  convertStringToFloat(string amount);
-static char getChar();
+    static char getChar();
+
+       static string convertDateToStr(Date oneDate);
+    static Date convertDateStrToDate(string dateStr);
 
 
 };

@@ -28,7 +28,7 @@ vector <Income> IncomesXmlFile::loadIncomesFromFile(int idLoggedUser)
             income.setIncomeId(AuxiliaryMethods::convertStringToInt(xmlIncomes.GetData()));
 
             xmlIncomes.FindElem("date");
-            income.setIncomeDate(DateManager::convertDateStrToDate(xmlIncomes.GetData()));
+            income.setIncomeDate(AuxiliaryMethods::convertDateStrToDate(xmlIncomes.GetData()));
 
             xmlIncomes.FindElem("item");
             income.setItem(xmlIncomes.GetData());
@@ -71,7 +71,7 @@ void IncomesXmlFile::pushOneIncomeToXml(Income income)
     xmlIncomes.IntoElem();
     xmlIncomes.AddElem("userId", income.getUserId());
     xmlIncomes.AddElem("incomeId", income.getIncomeId());
-    xmlIncomes.AddElem("date",DateManager::convertDateToStr(income.getIncomeDate()));
+    xmlIncomes.AddElem("date",AuxiliaryMethods::convertDateToStr(income.getIncomeDate()));
     xmlIncomes.AddElem("item", income.getItem());
     xmlIncomes.AddElem("amount", AuxiliaryMethods::convertFloatToStr(income.getAmount()));
     xmlIncomes.OutOfElem();

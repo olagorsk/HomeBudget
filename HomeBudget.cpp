@@ -42,6 +42,11 @@ int HomeBudget::userLoggingOut()
     userManager.userLoggingOut();
 }
 
+void HomeBudget::currentMonthBalance()
+{
+    budgetManager->currentMonthBalance();
+}
+
 
 char HomeBudget::selectOptionFromUserMenu()
 {

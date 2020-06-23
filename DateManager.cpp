@@ -28,7 +28,7 @@ Date DateManager::getDate()
             cin>>dateStr;
         }
         while  (checkDateFormat()==false);
-        oneDate = convertDateStrToDate(dateStr);
+        oneDate = AuxiliaryMethods::convertDateStrToDate(dateStr);
     }
     while (checkDate(oneDate)==false);
 
@@ -143,30 +143,7 @@ bool  DateManager::checkDay(Date oneDate, bool leapYear)
     return true;
 }
 
-Date  DateManager::convertDateStrToDate(string dateStr)
-{
-    Date oneDate;
 
-    string dayFromDate = "", monthFromDate = "", yearFromDate = "";
-
-    if (dateStr[8] == '0')
-        dayFromDate = dateStr[9];
-    else
-        dayFromDate = string() + dateStr[8] + dateStr[9];
-
-    if (dateStr[5] == '0')
-        monthFromDate = dateStr[6];
-    else
-        monthFromDate = string() + dateStr[5] + dateStr[6];
-
-    yearFromDate = string() + dateStr[0] + dateStr[1]+dateStr[2] + dateStr[3];
-
-    oneDate.setDay(atoi(dayFromDate.c_str()));
-    oneDate.setMonth(atoi(monthFromDate.c_str()));
-    oneDate.setYear(atoi(yearFromDate.c_str()));
-
-    return oneDate;
-}
 
 
 bool  DateManager::checkDate(Date oneDate)
@@ -178,19 +155,4 @@ bool  DateManager::checkDate(Date oneDate)
         return false;
 }
 
-string DateManager::convertDateToStr(Date oneDate)
-{
-    string year, month, day, dateStr;
-    year = AuxiliaryMethods::convertIntToStr(oneDate.getYear());
-    month = AuxiliaryMethods::convertIntToStr(oneDate.getMonth());
-    day = AuxiliaryMethods::convertIntToStr(oneDate.getDay());
-    if (month.length()==1)
-        month = '0'+ month;
 
-    if (day.length()==1)
-        day = '0'+ day;
-
-    dateStr = year + "-" + month + "-" + day;
-
-    return dateStr;
-}

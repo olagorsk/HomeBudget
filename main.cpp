@@ -45,9 +45,10 @@ int main()
             case '2':
                homeBudget.addExpense();
                 break;
-           /* case '3':
-                ksiazkaAdresowa.wyszukajAdresatowPoNazwisku();
+            case '3':
+                homeBudget.currentMonthBalance();
                 break;
+                /*
             case '4':
                 ksiazkaAdresowa.wyswietlWszystkichAdresatow();
                 break;
