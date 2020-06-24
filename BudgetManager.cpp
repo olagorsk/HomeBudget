@@ -149,7 +149,9 @@ bool BudgetManager::checkAmount (string amount)
         {
              if ((incomes.empty() == false)|| (expenses.empty() == false))
     {
+        cout<<"Podaj pierwsza date (od kiedy): ";
         Date firstDate = dateManager.getDate();
+        cout<<"Podaj druga date (do kiedy): ";
         Date secondDate = dateManager.getDate();
         balanceManager = new BalanceManager(incomes, expenses, dateManager.getTodayDate());
          balanceManager->givenDatesBalance(firstDate, secondDate);

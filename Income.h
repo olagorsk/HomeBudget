@@ -2,7 +2,7 @@
 #define INCOME_H
 
 #include <iostream>
-#include "DateManager.h"
+//#include "DateManager.h"
 #include "Date.h"
 
 using namespace std;

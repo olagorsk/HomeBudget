@@ -52,6 +52,11 @@ void HomeBudget::previousMonthBalance()
     budgetManager->previousMonthBalance();
 }
 
+void HomeBudget::givenDatesBalance()
+{
+    budgetManager->givenDatesBalance();
+}
+
 
 char HomeBudget::selectOptionFromUserMenu()
 {

@@ -51,10 +51,9 @@ int main()
             case '4':
                 homeBudget.previousMonthBalance();
                 break;
-                /*
             case '5':
-                ksiazkaAdresowa.usunAdresata();
-                break;*/
+                homeBudget.givenDatesBalance();
+                break;
             case '6':
                 homeBudget.changePasswordOfLoggedUser();
                 break;

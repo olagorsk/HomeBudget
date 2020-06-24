@@ -36,6 +36,7 @@ void changePasswordOfLoggedUser();
 int userLoggingOut();
 void currentMonthBalance();
 void previousMonthBalance();
+void givenDatesBalance();
 
 
 };
