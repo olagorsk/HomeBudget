@@ -48,13 +48,12 @@ int main()
             case '3':
                 homeBudget.currentMonthBalance();
                 break;
-                /*
             case '4':
-                ksiazkaAdresowa.wyswietlWszystkichAdresatow();
+                homeBudget.previousMonthBalance();
                 break;
             case '5':
-                ksiazkaAdresowa.usunAdresata();
-                break;*/
+                homeBudget.givenDatesBalance();
+                break;
             case '6':
                 homeBudget.changePasswordOfLoggedUser();
                 break;

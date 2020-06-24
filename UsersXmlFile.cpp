@@ -38,7 +38,6 @@ vector <User> UsersXmlFile::loadUsersFromFile()
 
 void UsersXmlFile::addUserToFile(User user)
 {
-
     xmlUsers.Load(USERS_FILE_NAME);
 
     if (xmlUsers.FindElem("user")==false)
@@ -54,7 +53,6 @@ void UsersXmlFile::addUserToFile(User user)
     xmlUsers.Save(USERS_FILE_NAME);
 }
 
-
 void UsersXmlFile::pushOneUserToXml(User user)
 {
     xmlUsers.AddElem("user");
@@ -66,9 +64,6 @@ void UsersXmlFile::pushOneUserToXml(User user)
     xmlUsers.AddElem("surname", user.getSurname());
     xmlUsers.OutOfElem();
 }
-
-
-
 
 void UsersXmlFile::changePasswordInXmlFile(User user)
 {

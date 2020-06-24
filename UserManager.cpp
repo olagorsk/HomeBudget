@@ -173,7 +173,7 @@ int UserManager::userLoggingOut()
 {
        idLoggedUser = 0;
     cout<<endl<<"Wylogowales sie"<<endl;
-    system("pause");
+    Sleep(2000);
     return idLoggedUser;
 
 }
