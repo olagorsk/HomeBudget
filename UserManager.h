@@ -38,7 +38,6 @@ public:
     };
 
 void userRegistration();
-void printAllUsers();
 int userLogging();
 void changePasswordOfLoggedUser();
 int userLoggingOut();

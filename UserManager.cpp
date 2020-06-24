@@ -99,15 +99,7 @@ bool UserManager::checkLoginExistence(string login)
     return false;
 }
 
-void UserManager::printAllUsers()
-{
-    for (int i=0; i<users.size(); i++)
-    {
-        cout << users[i].getId()<<endl;
-        cout << users[i].getLogin()<<endl;
-        cout << users[i].getPassword()<<endl;
-    }
-}
+
 
 int UserManager::userLogging()
 {

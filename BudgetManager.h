@@ -17,7 +17,7 @@
 #include "AuxiliaryMethods.h"
 #include "Income.h"
 #include "Expense.h"
-#include "UserManager.h"
+//#include "UserManager.h"
 #include "IncomesXmlFile.h"
 #include "ExpensesXmlFile.h"
 
@@ -35,6 +35,8 @@ class BudgetManager
     ExpensesXmlFile expensesXmlFile;
     IncomesXmlFile incomesXmlFile;
 
+     BalanceManager *balanceManager;
+
     bool checkAmount (string amount);
     Income getDetailsOfIncome();
     Expense getDetailsOfExpense();
@@ -42,7 +44,7 @@ class BudgetManager
       bool checkFirstSecondDate(Date firstDate, Date secondDate);
 
 
-    BalanceManager *balanceManager;
+
 
 public:
     BudgetManager (int idLoggedUser, string xmlIncomesFileName, string xmlExpensesFileName): ID_LOGGED_USER(idLoggedUser),incomesXmlFile(xmlIncomesFileName), expensesXmlFile(xmlExpensesFileName)
@@ -63,7 +65,7 @@ public:
     void addExpense();
     void currentMonthBalance();
     void previousMonthBalance();
-       void givenDatesBalance();
+    void givenDatesBalance();
 
 
 };

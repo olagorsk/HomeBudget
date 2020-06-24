@@ -15,6 +15,8 @@ class HomeBudget
     BudgetManager *budgetManager;
     string XML_INCOMES_FILENAME, XML_EXPENSES_FILENAME;
 
+
+
 public:
     HomeBudget(string usersFileName, string incomesXmlFileName, string expensesXmlFileName):userManager(usersFileName),  XML_INCOMES_FILENAME(incomesXmlFileName),  XML_EXPENSES_FILENAME(expensesXmlFileName)
      {
@@ -29,8 +31,7 @@ public:
     void userRegistration();
     int userLogging();
 bool isUserLogged();
-char selectOptionFromUserMenu();
-char selectOptionFromBudgetMenu();
+
 void addIncome();
 void addExpense();
 void changePasswordOfLoggedUser();
@@ -38,6 +39,8 @@ int userLoggingOut();
 void currentMonthBalance();
 void previousMonthBalance();
 void givenDatesBalance();
+  char selectOptionFromUserMenu();
+    char selectOptionFromBudgetMenu();
 
 
 };

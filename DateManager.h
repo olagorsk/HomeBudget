@@ -32,15 +32,8 @@ public:
     {
         todayDate = getTodayDate();
     }
-
     Date getTodayDate();
     Date getDate();
-
-
-
-
-
-
 };
 
 #endif
