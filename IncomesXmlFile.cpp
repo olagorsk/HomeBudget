@@ -10,7 +10,7 @@ vector <Income> IncomesXmlFile::loadIncomesFromFile(int idLoggedUser)
     vector <Income> incomes;
     int userIdFromXmlFile;
 
-    xmlIncomes.Load("d:/OLA/programowanie/KURS/20200429_program_HomeBudget/HomeBudget/incomes.xml");
+    xmlIncomes.Load(incomesFileName);
     xmlIncomes.ResetPos();
 
     while ( xmlIncomes.FindElem("income") )
@@ -49,7 +49,7 @@ vector <Income> IncomesXmlFile::loadIncomesFromFile(int idLoggedUser)
 void IncomesXmlFile::addIncomeToFile(Income income)
 {
 
-    xmlIncomes.Load("d:/OLA/programowanie/KURS/20200429_program_HomeBudget/HomeBudget/incomes.xml");
+    xmlIncomes.Load(incomesFileName);
 
     if (xmlIncomes.FindElem("income")==false)
     {
@@ -61,7 +61,7 @@ void IncomesXmlFile::addIncomeToFile(Income income)
     xmlIncomes.OutOfElem();
 
     pushOneIncomeToXml(income);
-    xmlIncomes.Save("d:/OLA/programowanie/KURS/20200429_program_HomeBudget/HomeBudget/incomes.xml");
+    xmlIncomes.Save(incomesFileName);
 }
 
 

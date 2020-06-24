@@ -39,11 +39,13 @@ class BudgetManager
     Income getDetailsOfIncome();
     Expense getDetailsOfExpense();
 
+      bool checkFirstSecondDate(Date firstDate, Date secondDate);
+
 
     BalanceManager *balanceManager;
 
 public:
-    BudgetManager (int idLoggedUser): ID_LOGGED_USER(idLoggedUser)
+    BudgetManager (int idLoggedUser, string xmlIncomesFileName, string xmlExpensesFileName): ID_LOGGED_USER(idLoggedUser),incomesXmlFile(xmlIncomesFileName), expensesXmlFile(xmlExpensesFileName)
     {
     balanceManager = NULL;
     incomes = incomesXmlFile.loadIncomesFromFile(ID_LOGGED_USER);

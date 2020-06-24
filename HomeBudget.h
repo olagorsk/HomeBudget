@@ -13,9 +13,10 @@ class HomeBudget
 {
     UserManager userManager;
     BudgetManager *budgetManager;
+    string XML_INCOMES_FILENAME, XML_EXPENSES_FILENAME;
 
 public:
-    HomeBudget(string usersFileName):userManager(usersFileName)
+    HomeBudget(string usersFileName, string incomesXmlFileName, string expensesXmlFileName):userManager(usersFileName),  XML_INCOMES_FILENAME(incomesXmlFileName),  XML_EXPENSES_FILENAME(expensesXmlFileName)
      {
      budgetManager = NULL;
      };

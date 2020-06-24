@@ -33,6 +33,7 @@ public:
 
  UserManager(string usersFileName):usersXmlFile(usersFileName)
 {
+    idLoggedUser = 0;
         users = usersXmlFile.loadUsersFromFile();
     };
 

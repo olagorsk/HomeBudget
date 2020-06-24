@@ -7,7 +7,7 @@ using namespace std;
 int main()
 {
 
-   HomeBudget homeBudget("users.xml");
+   HomeBudget homeBudget("users.xml", "incomes.xml", "expenses.xml");
     char choice;
 
     while(true)

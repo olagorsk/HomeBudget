@@ -24,7 +24,7 @@ Date DateManager::getDate()
     {
         do
         {
-            cout<<"Wpisz date: ";
+            cout<<endl<<"Wpisz date: ";
             cin>>dateStr;
         }
         while  (checkDateFormat()==false);

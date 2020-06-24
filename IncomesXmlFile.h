@@ -17,13 +17,14 @@ using namespace std;
 
 class IncomesXmlFile
 {
-    string incomesXmlFileName;
+    string incomesFileName;
     CMarkup xmlIncomes;
     void pushOneIncomeToXml(Income income);
 
 
 
 public:
+IncomesXmlFile (string xmlIncomesFileName): incomesFileName(xmlIncomesFileName){}
 
     void addIncomeToFile(Income income);
   vector <Income> loadIncomesFromFile(int idLoggedUser);

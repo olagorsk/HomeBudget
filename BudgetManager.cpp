@@ -147,12 +147,18 @@ bool BudgetManager::checkAmount (string amount)
 
         void BudgetManager::givenDatesBalance()
         {
+            Date firstDate, secondDate;
              if ((incomes.empty() == false)|| (expenses.empty() == false))
     {
-        cout<<"Podaj pierwsza date (od kiedy): ";
-        Date firstDate = dateManager.getDate();
-        cout<<"Podaj druga date (do kiedy): ";
-        Date secondDate = dateManager.getDate();
+           system("cls");
+        do
+        {
+        cout<<"Podaj pierwsza date (od kiedy) ";
+        firstDate = dateManager.getDate();
+        cout<<"Podaj druga date (do kiedy) ";
+        secondDate = dateManager.getDate();
+        }while (checkFirstSecondDate(firstDate, secondDate)==false);
+
         balanceManager = new BalanceManager(incomes, expenses, dateManager.getTodayDate());
          balanceManager->givenDatesBalance(firstDate, secondDate);
     }
@@ -161,6 +167,27 @@ bool BudgetManager::checkAmount (string amount)
         cout<<"Nie wprowadziles jeszcze zadnych przychodow i wydatkow"<<endl;
         Sleep(1500);
     }
+        }
+
+        bool BudgetManager::checkFirstSecondDate(Date firstDate, Date secondDate)
+        {
+            if (firstDate.getYear()>secondDate.getYear())
+            {
+                cout<<"Niepoprawna kolejnosc dat"<<endl;
+                 return false;
+            }
+
+            if (firstDate.getYear()==secondDate.getYear()&&firstDate.getMonth()>secondDate.getMonth())
+               {
+                cout<<"Niepoprawna kolejnosc dat"<<endl;
+                 return false;
+            }
+            if ((firstDate.getYear()==secondDate.getYear())&&(firstDate.getMonth()==secondDate.getMonth())&&(firstDate.getDay()>secondDate.getDay()))
+               {
+                cout<<"Niepoprawna kolejnosc dat"<<endl;
+                 return false;
+            }
+            return true;
         }
 
 

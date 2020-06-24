@@ -18,14 +18,14 @@ using namespace std;
 
 class ExpensesXmlFile
 {
-  string expensesXmlFileName;
+  string expensesFileName;
     CMarkup xmlExpenses;
    void pushOneExpenseToXml(Expense expense);
 
 
   public:
 
-
+ExpensesXmlFile (string xmlExpensesFileName): expensesFileName(xmlExpensesFileName){}
       void addExpenseToFile(Expense expense);
     vector <Expense> loadExpensesFromFile(int idLoggedUser);
 

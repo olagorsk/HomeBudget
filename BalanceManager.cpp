@@ -183,6 +183,8 @@ void BalanceManager::givenDatesBalance (Date firstDate, Date secondDate)
 {
     system("cls");
     float sumOfIncomes = 0, sumOfExpenses = 0;
+    bool firstDateExistance=false;
+    bool secondDateExistance=false;
 
     int i=0;
     int k=0;
@@ -190,13 +192,14 @@ void BalanceManager::givenDatesBalance (Date firstDate, Date secondDate)
 
     if (incomes.empty() == false)
     {
-        for  (i=0; i<incomes.size(); i++)
+        for  (i=0; i<=incomes.size(); i++)
         {
             if ((incomes[i].getIncomeDate().getYear()==firstDate.getYear())
                     && (incomes[i].getIncomeDate().getMonth()==firstDate.getMonth())
                     &&(incomes[i].getIncomeDate().getDay()>=firstDate.getDay()))
             {
                 k=i;
+                firstDateExistance = true;
                 break;
             }
 
@@ -204,107 +207,141 @@ void BalanceManager::givenDatesBalance (Date firstDate, Date secondDate)
                     && incomes[i].getIncomeDate().getMonth()>(firstDate.getMonth()))
             {
                 k=i;
+                firstDateExistance = true;
                 break;
             }
 
             if (incomes[i].getIncomeDate().getYear()>firstDate.getYear())
             {
                 k=i;
+                firstDateExistance = true;
                 break;
             }
         }
-
-        for  (i=incomes.size()-1; i>=0; i--)
+        if (firstDateExistance==true)
         {
-            if ((incomes[i].getIncomeDate().getYear()==secondDate.getYear())
-                    && (incomes[i].getIncomeDate().getMonth()==secondDate.getMonth())
-                    &&(incomes[i].getIncomeDate().getDay()<=secondDate.getDay()))
+            for  (i=incomes.size()-1; i>=0; i--)
             {
-                m=i;
-                break;
-            }
+                if ((incomes[i].getIncomeDate().getYear()==secondDate.getYear())
+                        && (incomes[i].getIncomeDate().getMonth()==secondDate.getMonth())
+                        &&(incomes[i].getIncomeDate().getDay()<=secondDate.getDay()))
+                {
+                    m=i;
+                    secondDateExistance=true;
+                    break;
+                }
 
-            if ((incomes[i].getIncomeDate().getYear()==secondDate.getYear())
-                    && incomes[i].getIncomeDate().getMonth()<(secondDate.getMonth()))
-            {
-                m=i;
-                break;
-            }
+                if ((incomes[i].getIncomeDate().getYear()==secondDate.getYear())
+                        && incomes[i].getIncomeDate().getMonth()<(secondDate.getMonth()))
+                {
+                    m=i;
+                    secondDateExistance=true;
+                    break;
+                }
 
-            if (incomes[i].getIncomeDate().getYear()<secondDate.getYear())
-            {
-                m=i;
-                break;
+                if (incomes[i].getIncomeDate().getYear()<secondDate.getYear())
+                {
+                    m=i;
+                    secondDateExistance=true;
+                    break;
+                }
             }
         }
     }
 
-    cout<<"Przychody i wydatki w okresie od "<<AuxiliaryMethods::convertDateToStr(firstDate)<<" do "<<AuxiliaryMethods::convertDateToStr(secondDate)<<endl<<endl;
-    cout<<"PRZYCHODY "<<endl<<"---------------------------"<<endl;
+  cout<<"Przychody i wydatki w okresie od "<<AuxiliaryMethods::convertDateToStr(firstDate)<<" do "<<AuxiliaryMethods::convertDateToStr(secondDate)<<endl<<endl;
 
-    for ( i=k; i<=m; i++)
+    if ((firstDateExistance==true)&&(secondDateExistance==true)&&(k<=m))
     {
-        printIncome(incomes[i]);
-        sumOfIncomes+=incomes[i].getAmount();
+        cout<<"PRZYCHODY "<<endl<<"---------------------------"<<endl;
+        for ( i=k; i<=m; i++)
+        {
+            printIncome(incomes[i]);
+            sumOfIncomes+=incomes[i].getAmount();
+        }
     }
+    else
+    {
+        cout<<"W tym okresie nie masz zadnych przychodow"<<endl;
+        Sleep(1500);
+    }
+
     if (expenses.empty() == false)
     {
+        firstDateExistance=false;
+        secondDateExistance=false;
         k=0;
         m=0;
-        for  (i=0; i<expenses.size(); i++)
+        for  (i=0; i<=expenses.size(); i++)
         {
-            if ((expenses[i].getExpenseDate().getYear()==secondDate.getYear())
-                    && (expenses[i].getExpenseDate().getMonth()==secondDate.getMonth())
-                    &&(expenses[i].getExpenseDate().getDay()>=secondDate.getDay()))
+            if ((expenses[i].getExpenseDate().getYear()==firstDate.getYear())
+                    && (expenses[i].getExpenseDate().getMonth()==firstDate.getMonth())
+                    &&(expenses[i].getExpenseDate().getDay()>=firstDate.getDay()))
             {
                 k=i;
+                firstDateExistance=true;
                 break;
             }
 
-            if ((expenses[i].getExpenseDate().getYear()==secondDate.getYear())
-                    && expenses[i].getExpenseDate().getMonth()>(secondDate.getMonth()))
+            if ((expenses[i].getExpenseDate().getYear()==firstDate.getYear())
+                    && expenses[i].getExpenseDate().getMonth()>(firstDate.getMonth()))
             {
                 k=i;
+                firstDateExistance=true;
                 break;
             }
 
-            if (expenses[i].getExpenseDate().getYear()>secondDate.getYear())
+            if (expenses[i].getExpenseDate().getYear()>firstDate.getYear())
             {
                 k=i;
+                firstDateExistance=true;
                 break;
             }
         }
-
-        for  (i=expenses.size()-1; i>=0; i--)
+        if (firstDateExistance==true)
         {
-            if ((expenses[i].getExpenseDate().getYear()==secondDate.getYear())
-                    && (expenses[i].getExpenseDate().getMonth()==secondDate.getMonth())
-                    &&(expenses[i].getExpenseDate().getDay()<=secondDate.getDay()))
+            for  (i=expenses.size()-1; i>=0; i--)
             {
-                m=i;
-                break;
-            }
+                if ((expenses[i].getExpenseDate().getYear()==secondDate.getYear())
+                        && (expenses[i].getExpenseDate().getMonth()==secondDate.getMonth())
+                        &&(expenses[i].getExpenseDate().getDay()<=secondDate.getDay()))
+                {
+                    m=i;
+                    secondDateExistance=true;
+                    break;
+                }
 
-            if ((expenses[i].getExpenseDate().getYear()==secondDate.getYear())
-                    && expenses[i].getExpenseDate().getMonth()<(secondDate.getMonth()))
-            {
-                m=i;
-                break;
-            }
+                if ((expenses[i].getExpenseDate().getYear()==secondDate.getYear())
+                        && expenses[i].getExpenseDate().getMonth()<(secondDate.getMonth()))
+                {
+                    m=i;
+                    secondDateExistance=true;
+                    break;
+                }
 
-            if (expenses[i].getExpenseDate().getYear()<secondDate.getYear())
-            {
-                m=i;
-                break;
+                if (expenses[i].getExpenseDate().getYear()<secondDate.getYear())
+                {
+                    m=i;
+                    secondDateExistance=true;
+                    break;
+                }
             }
         }
     }
 
-    cout<<"WYDATKI "<<endl<<"---------------------------"<<endl;
-    for ( i=k; i<=m; i++)
+    if ((firstDateExistance==true)&&(secondDateExistance==true)&&(k<=m))
     {
-        printExpense(expenses[i]);
-        sumOfExpenses+=expenses[i].getAmount();
+        cout<<"WYDATKI "<<endl<<"---------------------------"<<endl;
+        for ( i=k; i<=m; i++)
+        {
+            printExpense(expenses[i]);
+            sumOfExpenses+=expenses[i].getAmount();
+        }
+    }
+    else
+    {
+        cout<<"W tym okresie nie masz zadnych wydatkow"<<endl;
+        Sleep(1500);
     }
 
     cout<<endl<<"Suma przychodow wynosi: "<<AuxiliaryMethods::convertFloatToStr(sumOfIncomes)<<" zl"<<endl;

@@ -10,7 +10,7 @@ vector <Expense> ExpensesXmlFile::loadExpensesFromFile(int idLoggedUser)
     vector <Expense> expenses;
     int userIdFromXmlFile;
 
-    xmlExpenses.Load("d:/OLA/programowanie/KURS/20200429_program_HomeBudget/HomeBudget/expenses.xml");
+    xmlExpenses.Load(expensesFileName);
     xmlExpenses.ResetPos();
 
     while ( xmlExpenses.FindElem("expense") )
@@ -49,7 +49,7 @@ vector <Expense> ExpensesXmlFile::loadExpensesFromFile(int idLoggedUser)
 void ExpensesXmlFile::addExpenseToFile(Expense expense)
 {
 
-    xmlExpenses.Load("d:/OLA/programowanie/KURS/20200429_program_HomeBudget/HomeBudget/expenses.xml");
+    xmlExpenses.Load(expensesFileName);
 
     if (xmlExpenses.FindElem("expense")==false)
     {
@@ -61,7 +61,7 @@ void ExpensesXmlFile::addExpenseToFile(Expense expense)
     xmlExpenses.OutOfElem();
 
     pushOneExpenseToXml(expense);
-    xmlExpenses.Save("d:/OLA/programowanie/KURS/20200429_program_HomeBudget/HomeBudget/expenses.xml");
+    xmlExpenses.Save(expensesFileName);
 }
 
 

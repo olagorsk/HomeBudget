@@ -13,7 +13,7 @@ int HomeBudget::userLogging()
        userManager.userLogging();
     if (userManager.isUserLogged())
     {
-        budgetManager = new BudgetManager(userManager.getIdLoggedUser());
+        budgetManager = new BudgetManager(userManager.getIdLoggedUser(), XML_INCOMES_FILENAME, XML_EXPENSES_FILENAME);
     }
 }
 
