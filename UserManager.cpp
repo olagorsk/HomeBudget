@@ -49,7 +49,7 @@ User UserManager::getNewUserDetails()
     string surname;
     cout<<"Podaj nazwisko: ";
     surname = AuxiliaryMethods::getLine();
-    surname = AuxiliaryMethods::replaceFirstLetterToUpperCaseRemainingToLowerCase(name);
+    surname = AuxiliaryMethods::replaceFirstLetterToUpperCaseRemainingToLowerCase(surname);
     user.setSurname(surname);
 
     return user;

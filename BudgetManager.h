@@ -17,7 +17,6 @@
 #include "AuxiliaryMethods.h"
 #include "Income.h"
 #include "Expense.h"
-//#include "UserManager.h"
 #include "IncomesXmlFile.h"
 #include "ExpensesXmlFile.h"
 
