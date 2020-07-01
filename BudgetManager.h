@@ -30,17 +30,18 @@ class BudgetManager
     DateManager dateManager;
     vector <Income> incomes;
     vector <Expense> expenses;
+   // int lastIncomeId, lastExpenseId;
 
     ExpensesXmlFile expensesXmlFile;
     IncomesXmlFile incomesXmlFile;
 
-     BalanceManager *balanceManager;
+    BalanceManager *balanceManager;
 
     bool checkAmount (string amount);
     Income getDetailsOfIncome();
     Expense getDetailsOfExpense();
 
-      bool checkFirstSecondDate(Date firstDate, Date secondDate);
+    bool checkFirstSecondDate(Date firstDate, Date secondDate);
 
 
 
@@ -48,13 +49,14 @@ class BudgetManager
 public:
     BudgetManager (int idLoggedUser, string xmlIncomesFileName, string xmlExpensesFileName): ID_LOGGED_USER(idLoggedUser),incomesXmlFile(xmlIncomesFileName), expensesXmlFile(xmlExpensesFileName)
     {
-    balanceManager = NULL;
-    incomes = incomesXmlFile.loadIncomesFromFile(ID_LOGGED_USER);
-    expenses = expensesXmlFile.loadExpensesFromFile(ID_LOGGED_USER);
+        balanceManager = NULL;
+        incomes = incomesXmlFile.loadIncomesFromFile(ID_LOGGED_USER);
+        expenses = expensesXmlFile.loadExpensesFromFile(ID_LOGGED_USER);
+
 
     };
 
-      ~BudgetManager()
+    ~BudgetManager()
     {
         delete balanceManager;
         balanceManager = NULL;

@@ -26,13 +26,10 @@ Expense BudgetManager::getDetailsOfExpense()
     char sign;
     string amountStr;
     float amount;
+    int lastExpenseId = (expensesXmlFile.getLastExpenseId()+1);
 
     expense.setUserId(ID_LOGGED_USER);
-
-    if (expenses.empty() == true)
-        expense.setExpenseId(1);
-    else
-        expense.setExpenseId(expenses.back().getExpenseId() + 1);
+    expense.setExpenseId(lastExpenseId);
 
     system("cls");
     cout<<"Czy wydatek dotyczy dnia dzisiejszego? Jezeli tak wpisz 't', jezeli nie wcisnij dowolny klawisz"<<endl;
@@ -67,13 +64,10 @@ Income BudgetManager::getDetailsOfIncome()
     char sign;
     string amountStr;
     float amount;
+    int lastIncomeId = (incomesXmlFile.getLastIncomeId()+1);
 
     income.setUserId(ID_LOGGED_USER);
-
-    if (incomes.empty() == true)
-        income.setIncomeId(1);
-    else
-        income.setIncomeId(incomes.back().getIncomeId() + 1);
+    income.setIncomeId(lastIncomeId);
 
     system("cls");
     cout<<"Czy przychod dotyczy dnia dzisiejszego? Jezeli tak wpisz 't', jezeli nie wcisnij dowolny klawisz"<<endl;
@@ -115,13 +109,13 @@ bool BudgetManager::checkAmount (string amount)
     return true;
 }
 
-    void BudgetManager::currentMonthBalance()
-    {
+void BudgetManager::currentMonthBalance()
+{
 
-   if ((incomes.empty() == false)|| (expenses.empty() == false))
+    if ((incomes.empty() == false)|| (expenses.empty() == false))
     {
         balanceManager = new BalanceManager(incomes, expenses, dateManager.getTodayDate());
-         balanceManager->currentMonthBalance();
+        balanceManager->currentMonthBalance();
     }
     else
     {
@@ -129,66 +123,67 @@ bool BudgetManager::checkAmount (string amount)
         Sleep(1500);
     }
 
-    }
+}
 
-     void BudgetManager::previousMonthBalance()
-     {
-         if ((incomes.empty() == false)|| (expenses.empty() == false))
+void BudgetManager::previousMonthBalance()
+{
+    if ((incomes.empty() == false)|| (expenses.empty() == false))
     {
         balanceManager = new BalanceManager(incomes, expenses, dateManager.getTodayDate());
-         balanceManager->previousMonthBalance();
+        balanceManager->previousMonthBalance();
     }
     else
     {
         cout<<"Nie wprowadziles jeszcze zadnych przychodow i wydatkow"<<endl;
         Sleep(1500);
     }
-     }
+}
 
-        void BudgetManager::givenDatesBalance()
-        {
-            Date firstDate, secondDate;
-             if ((incomes.empty() == false)|| (expenses.empty() == false))
+void BudgetManager::givenDatesBalance()
+{
+    Date firstDate, secondDate;
+    if ((incomes.empty() == false)|| (expenses.empty() == false))
     {
-           system("cls");
+        system("cls");
         do
         {
-        cout<<"Podaj pierwsza date (od kiedy) ";
-        firstDate = dateManager.getDate();
-        cout<<"Podaj druga date (do kiedy) ";
-        secondDate = dateManager.getDate();
-        }while (checkFirstSecondDate(firstDate, secondDate)==false);
+            cout<<"Podaj pierwsza date (od kiedy) ";
+            firstDate = dateManager.getDate();
+            cout<<"Podaj druga date (do kiedy) ";
+            secondDate = dateManager.getDate();
+        }
+        while (checkFirstSecondDate(firstDate, secondDate)==false);
 
         balanceManager = new BalanceManager(incomes, expenses, dateManager.getTodayDate());
-         balanceManager->givenDatesBalance(firstDate, secondDate);
+        balanceManager->givenDatesBalance(firstDate, secondDate);
     }
     else
     {
         cout<<"Nie wprowadziles jeszcze zadnych przychodow i wydatkow"<<endl;
         Sleep(1500);
     }
-        }
+}
 
-        bool BudgetManager::checkFirstSecondDate(Date firstDate, Date secondDate)
-        {
-            if (firstDate.getYear()>secondDate.getYear())
-            {
-                cout<<"Niepoprawna kolejnosc dat"<<endl;
-                 return false;
-            }
+bool BudgetManager::checkFirstSecondDate(Date firstDate, Date secondDate)
+{
+    if (firstDate.getYear()>secondDate.getYear())
+    {
+        cout<<"Niepoprawna kolejnosc dat"<<endl;
+        return false;
+    }
 
-            if (firstDate.getYear()==secondDate.getYear()&&firstDate.getMonth()>secondDate.getMonth())
-               {
-                cout<<"Niepoprawna kolejnosc dat"<<endl;
-                 return false;
-            }
-            if ((firstDate.getYear()==secondDate.getYear())&&(firstDate.getMonth()==secondDate.getMonth())&&(firstDate.getDay()>secondDate.getDay()))
-               {
-                cout<<"Niepoprawna kolejnosc dat"<<endl;
-                 return false;
-            }
-            return true;
-        }
+    if (firstDate.getYear()==secondDate.getYear()&&firstDate.getMonth()>secondDate.getMonth())
+    {
+        cout<<"Niepoprawna kolejnosc dat"<<endl;
+        return false;
+    }
+    if ((firstDate.getYear()==secondDate.getYear())&&(firstDate.getMonth()==secondDate.getMonth())&&(firstDate.getDay()>secondDate.getDay()))
+    {
+        cout<<"Niepoprawna kolejnosc dat"<<endl;
+        return false;
+    }
+    return true;
+}
 
 
 

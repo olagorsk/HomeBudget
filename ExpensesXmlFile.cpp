@@ -15,8 +15,9 @@ vector <Expense> ExpensesXmlFile::loadExpensesFromFile(int idLoggedUser)
 
     while ( xmlExpenses.FindElem("expense") )
     {
-
-         xmlExpenses.IntoElem();
+        xmlExpenses.IntoElem();
+        xmlExpenses.FindElem("expenseId");
+        lastExpenseId = AuxiliaryMethods::convertStringToInt(xmlExpenses.GetData());
 
         xmlExpenses.FindElem("userId");
         userIdFromXmlFile = AuxiliaryMethods::convertStringToInt(xmlExpenses.GetData());
@@ -26,6 +27,7 @@ vector <Expense> ExpensesXmlFile::loadExpensesFromFile(int idLoggedUser)
 
         xmlExpenses.FindElem("expenseId");
         expense.setExpenseId(AuxiliaryMethods::convertStringToInt(xmlExpenses.GetData()));
+
 
         xmlExpenses.FindElem("date");
         expense.setExpenseDate(AuxiliaryMethods::convertDateStrToDate(xmlExpenses.GetData()));
@@ -62,6 +64,7 @@ void ExpensesXmlFile::addExpenseToFile(Expense expense)
 
     pushOneExpenseToXml(expense);
     xmlExpenses.Save(expensesFileName);
+    lastExpenseId++;
 }
 
 
@@ -76,4 +79,10 @@ void ExpensesXmlFile::pushOneExpenseToXml(Expense expense)
     xmlExpenses.AddElem("amount", AuxiliaryMethods::convertFloatToStr(expense.getAmount()));
     xmlExpenses.OutOfElem();
 }
+
+int ExpensesXmlFile::getLastExpenseId()
+{
+    return lastExpenseId;
+}
+
 

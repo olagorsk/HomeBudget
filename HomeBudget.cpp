@@ -5,12 +5,12 @@ using namespace std;
 
 void HomeBudget::userRegistration()
 {
-      userManager.userRegistration();
+    userManager.userRegistration();
 }
 
 int HomeBudget::userLogging()
 {
-       userManager.userLogging();
+    userManager.userLogging();
     if (userManager.isUserLogged())
     {
         budgetManager = new BudgetManager(userManager.getIdLoggedUser(), XML_INCOMES_FILENAME, XML_EXPENSES_FILENAME);
@@ -60,7 +60,7 @@ void HomeBudget::givenDatesBalance()
 
 char HomeBudget::selectOptionFromUserMenu()
 {
-      char choice;
+    char choice;
 
     system("cls");
     cout << "    >>> MENU  GLOWNE <<<" << endl;
@@ -77,7 +77,7 @@ char HomeBudget::selectOptionFromUserMenu()
 
 char HomeBudget::selectOptionFromBudgetMenu()
 {
-       char choice;
+    char choice;
 
     system("cls");
     cout << " >>> MENU UZYTKOWNIKA <<<" << endl;
