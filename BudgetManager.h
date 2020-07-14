@@ -30,7 +30,6 @@ class BudgetManager
     DateManager dateManager;
     vector <Income> incomes;
     vector <Expense> expenses;
-   // int lastIncomeId, lastExpenseId;
 
     ExpensesXmlFile expensesXmlFile;
     IncomesXmlFile incomesXmlFile;
@@ -42,7 +41,7 @@ class BudgetManager
     Expense getDetailsOfExpense();
 
     bool checkFirstSecondDate(Date firstDate, Date secondDate);
-
+    void printIncomes();
 
 
 
@@ -52,8 +51,6 @@ public:
         balanceManager = NULL;
         incomes = incomesXmlFile.loadIncomesFromFile(ID_LOGGED_USER);
         expenses = expensesXmlFile.loadExpensesFromFile(ID_LOGGED_USER);
-
-
     };
 
     ~BudgetManager()

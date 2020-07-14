@@ -158,9 +158,7 @@ void BalanceManager::previousMonthBalance()
         }
     }
 
-
     cout<<endl<<"Wydatki w poprzednim miesiacu"<<endl<<"---------------------------"<<endl;
-
     if (expenses.empty() == false)
     {
         for (int i=0; i<expenses.size(); i++)
@@ -179,82 +177,84 @@ void BalanceManager::previousMonthBalance()
     system("pause");
 }
 
-void BalanceManager::givenDatesBalance (Date firstDate, Date secondDate)
+bool BalanceManager::checkFirstDateIncomes(int i)
 {
-    system("cls");
+    if ((incomes[i].getIncomeDate().getYear())>(firstDate.getYear()))
+        return true;
+    if ((incomes[i].getIncomeDate().getYear()==firstDate.getYear())
+            && incomes[i].getIncomeDate().getMonth()>(firstDate.getMonth()))
+        return true;
+    if ((incomes[i].getIncomeDate().getYear()==firstDate.getYear())
+            && (incomes[i].getIncomeDate().getMonth()==firstDate.getMonth())
+            &&(incomes[i].getIncomeDate().getDay()>=firstDate.getDay()))
+        return true;
+    else
+        return false;
+}
+
+bool BalanceManager::checkFirstDateExpenses( int i)
+{
+    if ((expenses[i].getExpenseDate().getYear()==firstDate.getYear())
+            && (expenses[i].getExpenseDate().getMonth()==firstDate.getMonth())
+            &&(expenses[i].getExpenseDate().getDay()>=firstDate.getDay()))
+        return true;
+    if ((expenses[i].getExpenseDate().getYear()==firstDate.getYear())
+            && expenses[i].getExpenseDate().getMonth()>(firstDate.getMonth()))
+        return true;
+    if (expenses[i].getExpenseDate().getYear()>firstDate.getYear())
+        return true;
+    else
+        return false;
+}
+
+bool BalanceManager::checkSecondDateIncomes( int i)
+{
+    if ((incomes[i].getIncomeDate().getYear()==secondDate.getYear())
+            && (incomes[i].getIncomeDate().getMonth()==secondDate.getMonth())
+            &&(incomes[i].getIncomeDate().getDay()<=secondDate.getDay()))
+        return true;
+    if ((incomes[i].getIncomeDate().getYear()==secondDate.getYear())
+            && incomes[i].getIncomeDate().getMonth()<(secondDate.getMonth()))
+        return true;
+    if (incomes[i].getIncomeDate().getYear()<secondDate.getYear())
+        return true;
+    else
+        return false;
+}
+
+bool BalanceManager::checkSecondDateExpenses(int i)
+{
+    if ((expenses[i].getExpenseDate().getYear()==secondDate.getYear())
+            && (expenses[i].getExpenseDate().getMonth()==secondDate.getMonth())
+            &&(expenses[i].getExpenseDate().getDay()<=secondDate.getDay()))
+        return true;
+    if ((expenses[i].getExpenseDate().getYear()==secondDate.getYear())
+            && expenses[i].getExpenseDate().getMonth()<(secondDate.getMonth()))
+        return true;
+    if (expenses[i].getExpenseDate().getYear()<secondDate.getYear())
+        return true;
+    else
+        return false;
+
+}
+
+void BalanceManager::givenDatesBalance(Date firstDateBalance, Date secondDateBalance)
+{
+    firstDate = firstDateBalance, secondDate = secondDateBalance;
     float sumOfIncomes = 0, sumOfExpenses = 0;
-    bool firstDateExistance=false;
-    bool secondDateExistance=false;
+    int k=0, m=0;
+    firstDateExistance==false, secondDateExistance==false;
 
-    int i=0;
-    int k=0;
-    int m=0;
-
+    system("cls");
     if (incomes.empty() == false)
-    {
-        for  (i=0; i<=incomes.size(); i++)
-        {
-            if ((incomes[i].getIncomeDate().getYear()==firstDate.getYear())
-                    && (incomes[i].getIncomeDate().getMonth()==firstDate.getMonth())
-                    &&(incomes[i].getIncomeDate().getDay()>=firstDate.getDay()))
-            {
-                k=i;
-                firstDateExistance = true;
-                break;
-            }
+        checkIncomesInGivenDates(k, m);
 
-            if ((incomes[i].getIncomeDate().getYear()==firstDate.getYear())
-                    && incomes[i].getIncomeDate().getMonth()>(firstDate.getMonth()))
-            {
-                k=i;
-                firstDateExistance = true;
-                break;
-            }
-
-            if (incomes[i].getIncomeDate().getYear()>firstDate.getYear())
-            {
-                k=i;
-                firstDateExistance = true;
-                break;
-            }
-        }
-        if (firstDateExistance==true)
-        {
-            for  (i=incomes.size()-1; i>=0; i--)
-            {
-                if ((incomes[i].getIncomeDate().getYear()==secondDate.getYear())
-                        && (incomes[i].getIncomeDate().getMonth()==secondDate.getMonth())
-                        &&(incomes[i].getIncomeDate().getDay()<=secondDate.getDay()))
-                {
-                    m=i;
-                    secondDateExistance=true;
-                    break;
-                }
-
-                if ((incomes[i].getIncomeDate().getYear()==secondDate.getYear())
-                        && incomes[i].getIncomeDate().getMonth()<(secondDate.getMonth()))
-                {
-                    m=i;
-                    secondDateExistance=true;
-                    break;
-                }
-
-                if (incomes[i].getIncomeDate().getYear()<secondDate.getYear())
-                {
-                    m=i;
-                    secondDateExistance=true;
-                    break;
-                }
-            }
-        }
-    }
-
-  cout<<"Przychody i wydatki w okresie od "<<AuxiliaryMethods::convertDateToStr(firstDate)<<" do "<<AuxiliaryMethods::convertDateToStr(secondDate)<<endl<<endl;
+    cout<<"Przychody i wydatki w okresie od "<<AuxiliaryMethods::convertDateToStr(firstDate)<<" do "<<AuxiliaryMethods::convertDateToStr(secondDate)<<endl<<endl;
 
     if ((firstDateExistance==true)&&(secondDateExistance==true)&&(k<=m))
     {
         cout<<"PRZYCHODY "<<endl<<"---------------------------"<<endl;
-        for ( i=k; i<=m; i++)
+        for ( int i=k; i<=m; i++)
         {
             printIncome(incomes[i]);
             sumOfIncomes+=incomes[i].getAmount();
@@ -266,73 +266,15 @@ void BalanceManager::givenDatesBalance (Date firstDate, Date secondDate)
         Sleep(1500);
     }
 
+    k=0, m=0;
+    firstDateExistance=false, secondDateExistance=false;
     if (expenses.empty() == false)
-    {
-        firstDateExistance=false;
-        secondDateExistance=false;
-        k=0;
-        m=0;
-        for  (i=0; i<=expenses.size(); i++)
-        {
-            if ((expenses[i].getExpenseDate().getYear()==firstDate.getYear())
-                    && (expenses[i].getExpenseDate().getMonth()==firstDate.getMonth())
-                    &&(expenses[i].getExpenseDate().getDay()>=firstDate.getDay()))
-            {
-                k=i;
-                firstDateExistance=true;
-                break;
-            }
-
-            if ((expenses[i].getExpenseDate().getYear()==firstDate.getYear())
-                    && expenses[i].getExpenseDate().getMonth()>(firstDate.getMonth()))
-            {
-                k=i;
-                firstDateExistance=true;
-                break;
-            }
-
-            if (expenses[i].getExpenseDate().getYear()>firstDate.getYear())
-            {
-                k=i;
-                firstDateExistance=true;
-                break;
-            }
-        }
-        if (firstDateExistance==true)
-        {
-            for  (i=expenses.size()-1; i>=0; i--)
-            {
-                if ((expenses[i].getExpenseDate().getYear()==secondDate.getYear())
-                        && (expenses[i].getExpenseDate().getMonth()==secondDate.getMonth())
-                        &&(expenses[i].getExpenseDate().getDay()<=secondDate.getDay()))
-                {
-                    m=i;
-                    secondDateExistance=true;
-                    break;
-                }
-
-                if ((expenses[i].getExpenseDate().getYear()==secondDate.getYear())
-                        && expenses[i].getExpenseDate().getMonth()<(secondDate.getMonth()))
-                {
-                    m=i;
-                    secondDateExistance=true;
-                    break;
-                }
-
-                if (expenses[i].getExpenseDate().getYear()<secondDate.getYear())
-                {
-                    m=i;
-                    secondDateExistance=true;
-                    break;
-                }
-            }
-        }
-    }
+        checkExpensesInGivenDates(k, m);
 
     if ((firstDateExistance==true)&&(secondDateExistance==true)&&(k<=m))
     {
         cout<<"WYDATKI "<<endl<<"---------------------------"<<endl;
-        for ( i=k; i<=m; i++)
+        for ( int i=k; i<=m; i++)
         {
             printExpense(expenses[i]);
             sumOfExpenses+=expenses[i].getAmount();
@@ -343,10 +285,60 @@ void BalanceManager::givenDatesBalance (Date firstDate, Date secondDate)
         cout<<"W tym okresie nie masz zadnych wydatkow"<<endl;
         Sleep(1500);
     }
-
     cout<<endl<<"Suma przychodow wynosi: "<<AuxiliaryMethods::convertFloatToStr(sumOfIncomes)<<" zl"<<endl;
     cout<<"Suma wydatkow wynosi: "<<AuxiliaryMethods::convertFloatToStr(sumOfExpenses)<<" zl"<<endl;
     cout<<"Roznica przychody - wydatki: "<<AuxiliaryMethods::convertFloatToStr(sumOfIncomes - sumOfExpenses)<< "zl"<<endl<<endl;
     system("pause");
+}
+
+void BalanceManager::checkIncomesInGivenDates(int &k, int &m)
+{
+    for  (int i=0; i<incomes.size(); i++)
+    {
+        if (checkFirstDateIncomes(i))
+        {
+            k=i;
+            firstDateExistance = true;
+            break;
+        }
+    }
+    if (firstDateExistance==true)
+    {
+        for  (int i=incomes.size()-1; i>=0; i--)
+        {
+            if (checkSecondDateIncomes(i))
+            {
+                m=i;
+                secondDateExistance=true;
+                break;
+            }
+        }
+    }
+}
+
+void BalanceManager::checkExpensesInGivenDates(int &k, int &m)
+{
+    for  (int i=0; i<expenses.size(); i++)
+    {
+
+        if (checkFirstDateExpenses(i))
+        {
+            k=i;
+            firstDateExistance = true;
+            break;
+        }
+    }
+    if (firstDateExistance==true)
+    {
+        for  (int i=expenses.size()-1; i>=0; i--)
+        {
+            if (checkSecondDateExpenses(i))
+            {
+                m=i;
+                secondDateExistance=true;
+                break;
+            }
+        }
+    }
 }
 

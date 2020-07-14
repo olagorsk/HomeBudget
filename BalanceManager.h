@@ -21,7 +21,7 @@ class BalanceManager
 
     vector <Income> incomes;
     vector <Expense> expenses;
-    Date todayDate;
+    Date todayDate, firstDate, secondDate;
 
     struct IncomesSortYear;
     struct IncomesSortMonth;
@@ -31,6 +31,12 @@ class BalanceManager
     struct ExpensesSortMonth;
     struct ExpensesSortDay;
 
+    bool firstDateExistance;
+    bool secondDateExistance;
+
+    void checkIncomesInGivenDates(int &k, int &m);
+    void checkExpensesInGivenDates(int &k, int &m);
+
 
     vector<Income> sortIncomes();
     vector <Expense> sortExpenses();
@@ -39,14 +45,22 @@ class BalanceManager
     void printExpense(Expense expense);
 
 
+    bool checkFirstDateIncomes(int i);
+      bool checkSecondDateIncomes(int i);
+
+        bool checkFirstDateExpenses(int i);
+      bool checkSecondDateExpenses(int i);
+
 public:
 
     BalanceManager (vector <Income> unsortedIncomes, vector <Expense> unsortedExpenses, Date date):incomes(unsortedIncomes), expenses(unsortedExpenses), todayDate(date)
     {
         incomes = sortIncomes();
         expenses = sortExpenses();
+        firstDateExistance==false;
+        secondDateExistance==false;
     };
-    ~BalanceManager()
+   ~BalanceManager()
     {
         incomes.clear();
         expenses.clear();

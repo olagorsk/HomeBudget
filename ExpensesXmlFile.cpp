@@ -16,11 +16,14 @@ vector <Expense> ExpensesXmlFile::loadExpensesFromFile(int idLoggedUser)
     while ( xmlExpenses.FindElem("expense") )
     {
         xmlExpenses.IntoElem();
+
+            xmlExpenses.FindElem("userId");
+        userIdFromXmlFile = AuxiliaryMethods::convertStringToInt(xmlExpenses.GetData());
+
         xmlExpenses.FindElem("expenseId");
         lastExpenseId = AuxiliaryMethods::convertStringToInt(xmlExpenses.GetData());
 
-        xmlExpenses.FindElem("userId");
-        userIdFromXmlFile = AuxiliaryMethods::convertStringToInt(xmlExpenses.GetData());
+
         if (userIdFromXmlFile == idLoggedUser)
         {
         expense.setUserId(idLoggedUser);

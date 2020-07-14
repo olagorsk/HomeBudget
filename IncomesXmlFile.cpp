@@ -16,11 +16,15 @@ vector <Income> IncomesXmlFile::loadIncomesFromFile(int idLoggedUser)
     while ( xmlIncomes.FindElem("income") )
     {
         xmlIncomes.IntoElem();
-        xmlIncomes.FindElem("incomeId");
-        lastIncomeId = AuxiliaryMethods::convertStringToInt(xmlIncomes.GetData());
 
         xmlIncomes.FindElem("userId");
         userIdFromXmlFile = AuxiliaryMethods::convertStringToInt(xmlIncomes.GetData());
+
+        xmlIncomes.FindElem("incomeId");
+        lastIncomeId = AuxiliaryMethods::convertStringToInt(xmlIncomes.GetData());
+
+
+
         if (userIdFromXmlFile == idLoggedUser)
         {
             income.setUserId(idLoggedUser);

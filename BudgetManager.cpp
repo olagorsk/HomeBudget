@@ -111,7 +111,6 @@ bool BudgetManager::checkAmount (string amount)
 
 void BudgetManager::currentMonthBalance()
 {
-
     if ((incomes.empty() == false)|| (expenses.empty() == false))
     {
         balanceManager = new BalanceManager(incomes, expenses, dateManager.getTodayDate());
@@ -141,21 +140,21 @@ void BudgetManager::previousMonthBalance()
 
 void BudgetManager::givenDatesBalance()
 {
-    Date firstDate, secondDate;
+    Date firstDateBalance, secondDateBalance;
     if ((incomes.empty() == false)|| (expenses.empty() == false))
     {
         system("cls");
         do
         {
             cout<<"Podaj pierwsza date (od kiedy) ";
-            firstDate = dateManager.getDate();
+            firstDateBalance = dateManager.getDate();
             cout<<"Podaj druga date (do kiedy) ";
-            secondDate = dateManager.getDate();
+            secondDateBalance = dateManager.getDate();
         }
-        while (checkFirstSecondDate(firstDate, secondDate)==false);
+        while (checkFirstSecondDate(firstDateBalance, secondDateBalance)==false);
 
         balanceManager = new BalanceManager(incomes, expenses, dateManager.getTodayDate());
-        balanceManager->givenDatesBalance(firstDate, secondDate);
+        balanceManager->givenDatesBalance(firstDateBalance, secondDateBalance);
     }
     else
     {
@@ -185,5 +184,11 @@ bool BudgetManager::checkFirstSecondDate(Date firstDate, Date secondDate)
     return true;
 }
 
-
+  void BudgetManager::printIncomes()
+  {
+       for (int i=0; i<incomes.size(); i++)
+       {
+         cout<<"IncomeId: "<<  incomes[i].getIncomeId()<<endl;
+       }
+  }
 
