@@ -17,37 +17,29 @@ using namespace std;
 
 class UserManager
 {
-vector<User>users;
+    vector<User>users;
+    UsersXmlFile usersXmlFile;
+    int idLoggedUser;
 
-UsersXmlFile usersXmlFile;
-
-int idLoggedUser;
-
-
-int getIdNewUser();
-User getNewUserDetails();
-bool checkLoginExistence(string login);
-bool checkLoginPassword(string login);
+    int getIdNewUser();
+    User getNewUserDetails();
+    bool checkLoginExistence(string login);
+    bool checkLoginPassword(string login);
 
 public:
 
- UserManager(string usersFileName):usersXmlFile(usersFileName)
-{
-    idLoggedUser = 0;
+    UserManager(string usersFileName):usersXmlFile(usersFileName)
+    {
+        idLoggedUser = 0;
         users = usersXmlFile.loadUsersFromFile();
     };
 
-void userRegistration();
-int userLogging();
-void changePasswordOfLoggedUser();
-int userLoggingOut();
-int getIdLoggedUser();
-bool isUserLogged();
-
-
-
-
-
+    void userRegistration();
+    int userLogging();
+    void changePasswordOfLoggedUser();
+    int userLoggingOut();
+    int getIdLoggedUser();
+    bool isUserLogged();
 };
 
 #endif

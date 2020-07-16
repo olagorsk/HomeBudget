@@ -18,10 +18,9 @@ using namespace std;
 
 class BalanceManager
 {
-
     vector <Income> incomes;
     vector <Expense> expenses;
-    Date todayDate;
+    Date todayDate, firstDate, secondDate;
 
     struct IncomesSortYear;
     struct IncomesSortMonth;
@@ -31,13 +30,21 @@ class BalanceManager
     struct ExpensesSortMonth;
     struct ExpensesSortDay;
 
+    bool firstDateExistance;
+    bool secondDateExistance;
+    void checkIncomesInGivenDates(int &k, int &m);
+    void checkExpensesInGivenDates(int &k, int &m);
+
 
     vector<Income> sortIncomes();
     vector <Expense> sortExpenses();
 
     void printIncome(Income income);
     void printExpense(Expense expense);
-
+    bool checkFirstDateIncomes(int i);
+    bool checkSecondDateIncomes(int i);
+    bool checkFirstDateExpenses(int i);
+    bool checkSecondDateExpenses(int i);
 
 public:
 
@@ -51,20 +58,8 @@ public:
         incomes.clear();
         expenses.clear();
     }
-
     void currentMonthBalance();
     void previousMonthBalance();
     void givenDatesBalance(Date firstDate, Date secondDate);
-
 };
-
-
-
-
-
-
-
-
-
-
 #endif

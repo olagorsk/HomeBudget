@@ -9,18 +9,15 @@ class Date
 {
 
     int day, month, year;
-    // Date(int day, int month, int year) : y(year), m(month), d(day) {}
 
 public:
+    void setDay(int newDay);
+    void setMonth (int newMonth);
+    void setYear(int newYear);
 
-void setDay(int newDay);
-void setMonth (int newMonth);
-void setYear(int newYear);
-
-int getDay();
-int getMonth();
-int getYear();
-
+    int getDay();
+    int getMonth();
+    int getYear();
 };
 
 #endif

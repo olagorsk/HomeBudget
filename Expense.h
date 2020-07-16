@@ -12,16 +12,13 @@ using namespace std;
 class Expense
 {
 
-int userId, expenseId;
-Date expenseDate;
-string item;
-float amount;
-
-
+    int userId, expenseId;
+    Date expenseDate;
+    string item;
+    float amount;
 
 public:
-
-   void setUserId(int newUserId);
+    void setUserId(int newUserId);
     void setExpenseId (int newExpenseId);
     void setExpenseDate(Date newExpenseDate);
     void setItem (string newItem);

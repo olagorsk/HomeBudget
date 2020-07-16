@@ -15,29 +15,17 @@ using namespace std;
 
 class UsersXmlFile
 {
-  const string USERS_FILE_NAME;
+    const string USERS_FILE_NAME;
     CMarkup xmlUsers;
-
-
     void pushOneUserToXml(User oneUser);
 
-  public:
-      UsersXmlFile (string usersFileName):USERS_FILE_NAME(usersFileName)
-      {
+public:
+    UsersXmlFile (string usersFileName):USERS_FILE_NAME(usersFileName)
+    {};
 
-      };
-
-      void addUserToFile(User user);
+    void addUserToFile(User user);
     vector <User> loadUsersFromFile();
     void changePasswordInXmlFile(User user);
-
-
-
 };
-
-
-
-
-
 
 #endif
