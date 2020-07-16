@@ -23,8 +23,6 @@ vector <Income> IncomesXmlFile::loadIncomesFromFile(int idLoggedUser)
         xmlIncomes.FindElem("incomeId");
         lastIncomeId = AuxiliaryMethods::convertStringToInt(xmlIncomes.GetData());
 
-
-
         if (userIdFromXmlFile == idLoggedUser)
         {
             income.setUserId(idLoggedUser);
@@ -53,7 +51,6 @@ vector <Income> IncomesXmlFile::loadIncomesFromFile(int idLoggedUser)
 
 void IncomesXmlFile::addIncomeToFile(Income income)
 {
-
     xmlIncomes.Load(incomesFileName);
 
     if (xmlIncomes.FindElem("income")==false)
@@ -70,12 +67,10 @@ void IncomesXmlFile::addIncomeToFile(Income income)
     lastIncomeId++;
 }
 
-
 int IncomesXmlFile::getLastIncomeId()
 {
     return lastIncomeId;
 }
-
 
 void IncomesXmlFile::pushOneIncomeToXml(Income income)
 {
@@ -88,6 +83,3 @@ void IncomesXmlFile::pushOneIncomeToXml(Income income)
     xmlIncomes.AddElem("amount", AuxiliaryMethods::convertFloatToStr(income.getAmount()));
     xmlIncomes.OutOfElem();
 }
-
-
-

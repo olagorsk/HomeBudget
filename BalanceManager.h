@@ -18,7 +18,6 @@ using namespace std;
 
 class BalanceManager
 {
-
     vector <Income> incomes;
     vector <Expense> expenses;
     Date todayDate, firstDate, secondDate;
@@ -33,7 +32,6 @@ class BalanceManager
 
     bool firstDateExistance;
     bool secondDateExistance;
-
     void checkIncomesInGivenDates(int &k, int &m);
     void checkExpensesInGivenDates(int &k, int &m);
 
@@ -43,13 +41,10 @@ class BalanceManager
 
     void printIncome(Income income);
     void printExpense(Expense expense);
-
-
     bool checkFirstDateIncomes(int i);
-      bool checkSecondDateIncomes(int i);
-
-        bool checkFirstDateExpenses(int i);
-      bool checkSecondDateExpenses(int i);
+    bool checkSecondDateIncomes(int i);
+    bool checkFirstDateExpenses(int i);
+    bool checkSecondDateExpenses(int i);
 
 public:
 
@@ -57,28 +52,14 @@ public:
     {
         incomes = sortIncomes();
         expenses = sortExpenses();
-        firstDateExistance==false;
-        secondDateExistance==false;
     };
-   ~BalanceManager()
+    ~BalanceManager()
     {
         incomes.clear();
         expenses.clear();
     }
-
     void currentMonthBalance();
     void previousMonthBalance();
     void givenDatesBalance(Date firstDate, Date secondDate);
-
 };
-
-
-
-
-
-
-
-
-
-
 #endif

@@ -33,7 +33,6 @@ int main()
                 break;
             }
         }
-
         else
         {
             choice = homeBudget.selectOptionFromBudgetMenu();
@@ -60,11 +59,8 @@ int main()
             case '7':
                 homeBudget.userLoggingOut();
                 break;
-
             }
         }
-
     }
-
     return 0;
 }

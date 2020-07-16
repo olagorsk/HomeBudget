@@ -9,16 +9,12 @@ using namespace std;
 
 class Income
 {
-
 int userId, incomeId;
 Date incomeDate;
 string item;
 float amount;
 
-
-
 public:
-
     void setUserId(int newUserId);
     void setIncomeId (int newIncomeId);
     void setIncomeDate(Date newIncomeDate);
@@ -30,7 +26,6 @@ public:
     Date getIncomeDate();
     string getItem();
     float getAmount();
-
 };
 
 #endif

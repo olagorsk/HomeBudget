@@ -57,7 +57,6 @@ void HomeBudget::givenDatesBalance()
     budgetManager->givenDatesBalance();
 }
 
-
 char HomeBudget::selectOptionFromUserMenu()
 {
     char choice;

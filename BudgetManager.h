@@ -33,17 +33,13 @@ class BudgetManager
 
     ExpensesXmlFile expensesXmlFile;
     IncomesXmlFile incomesXmlFile;
-
     BalanceManager *balanceManager;
 
     bool checkAmount (string amount);
     Income getDetailsOfIncome();
     Expense getDetailsOfExpense();
-
     bool checkFirstSecondDate(Date firstDate, Date secondDate);
     void printIncomes();
-
-
 
 public:
     BudgetManager (int idLoggedUser, string xmlIncomesFileName, string xmlExpensesFileName): ID_LOGGED_USER(idLoggedUser),incomesXmlFile(xmlIncomesFileName), expensesXmlFile(xmlExpensesFileName)

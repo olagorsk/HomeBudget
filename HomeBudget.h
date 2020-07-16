@@ -30,7 +30,6 @@ public:
     void userRegistration();
     int userLogging();
     bool isUserLogged();
-
     void addIncome();
     void addExpense();
     void changePasswordOfLoggedUser();

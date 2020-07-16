@@ -12,7 +12,6 @@ void UserManager::userRegistration()
 
     cout << endl << "Konto zalozono pomyslnie" << endl;
     system("pause");
-
 }
 
 User UserManager::getNewUserDetails()
@@ -54,7 +53,6 @@ User UserManager::getNewUserDetails()
 
     return user;
 }
-
 
 bool UserManager::checkLoginPassword(string login)
 {
@@ -98,8 +96,6 @@ bool UserManager::checkLoginExistence(string login)
     }
     return false;
 }
-
-
 
 int UserManager::userLogging()
 {

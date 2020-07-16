@@ -9,6 +9,7 @@ struct BalanceManager::IncomesSortYear
         return (income1.getIncomeDate().getYear()< income2.getIncomeDate().getYear());
     }
 };
+
 struct BalanceManager::IncomesSortMonth
 {
     inline bool operator() (Income income1, Income income2)
@@ -55,7 +56,6 @@ struct BalanceManager::ExpensesSortDay
         return false;
     }
 };
-
 
 vector <Income> BalanceManager::sortIncomes()
 {
@@ -105,7 +105,6 @@ void BalanceManager::currentMonthBalance()
             }
         }
     }
-
 
     cout<<endl<<"Wydatki w biezacym miesiacu"<<endl<<"---------------------------"<<endl;
 

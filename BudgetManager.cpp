@@ -9,7 +9,6 @@ void BudgetManager::addIncome()
     income = getDetailsOfIncome();
     incomesXmlFile.addIncomeToFile(income);
     incomes.push_back(income);
-
 }
 
 void BudgetManager::addExpense()
@@ -121,7 +120,6 @@ void BudgetManager::currentMonthBalance()
         cout<<"Nie wprowadziles jeszcze zadnych przychodow i wydatkow"<<endl;
         Sleep(1500);
     }
-
 }
 
 void BudgetManager::previousMonthBalance()
@@ -184,11 +182,11 @@ bool BudgetManager::checkFirstSecondDate(Date firstDate, Date secondDate)
     return true;
 }
 
-  void BudgetManager::printIncomes()
-  {
-       for (int i=0; i<incomes.size(); i++)
-       {
-         cout<<"IncomeId: "<<  incomes[i].getIncomeId()<<endl;
-       }
-  }
+void BudgetManager::printIncomes()
+{
+    for (int i=0; i<incomes.size(); i++)
+    {
+        cout<<"IncomeId: "<<  incomes[i].getIncomeId()<<endl;
+    }
+}
 

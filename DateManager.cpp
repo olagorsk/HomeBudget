@@ -13,12 +13,10 @@ Date DateManager::getTodayDate()
     todayDate.setYear(st.wYear);
 
     return todayDate;
-
 }
 
 Date DateManager::getDate()
 {
-
     Date oneDate;
     do
     {
@@ -142,9 +140,6 @@ bool  DateManager::checkDay(Date oneDate, bool leapYear)
     }
     return true;
 }
-
-
-
 
 bool  DateManager::checkDate(Date oneDate)
 {

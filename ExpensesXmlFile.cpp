@@ -17,36 +17,34 @@ vector <Expense> ExpensesXmlFile::loadExpensesFromFile(int idLoggedUser)
     {
         xmlExpenses.IntoElem();
 
-            xmlExpenses.FindElem("userId");
+        xmlExpenses.FindElem("userId");
         userIdFromXmlFile = AuxiliaryMethods::convertStringToInt(xmlExpenses.GetData());
 
         xmlExpenses.FindElem("expenseId");
         lastExpenseId = AuxiliaryMethods::convertStringToInt(xmlExpenses.GetData());
 
-
         if (userIdFromXmlFile == idLoggedUser)
         {
-        expense.setUserId(idLoggedUser);
+            expense.setUserId(idLoggedUser);
 
-        xmlExpenses.FindElem("expenseId");
-        expense.setExpenseId(AuxiliaryMethods::convertStringToInt(xmlExpenses.GetData()));
+            xmlExpenses.FindElem("expenseId");
+            expense.setExpenseId(AuxiliaryMethods::convertStringToInt(xmlExpenses.GetData()));
 
 
-        xmlExpenses.FindElem("date");
-        expense.setExpenseDate(AuxiliaryMethods::convertDateStrToDate(xmlExpenses.GetData()));
+            xmlExpenses.FindElem("date");
+            expense.setExpenseDate(AuxiliaryMethods::convertDateStrToDate(xmlExpenses.GetData()));
 
-        xmlExpenses.FindElem("item");
-        expense.setItem(xmlExpenses.GetData());
+            xmlExpenses.FindElem("item");
+            expense.setItem(xmlExpenses.GetData());
 
-        xmlExpenses.FindElem("amount");
-        expense.setAmount(AuxiliaryMethods::convertStringToFloat(xmlExpenses.GetData()));
+            xmlExpenses.FindElem("amount");
+            expense.setAmount(AuxiliaryMethods::convertStringToFloat(xmlExpenses.GetData()));
 
-        xmlExpenses.OutOfElem();
-        expenses.push_back(expense);
+            xmlExpenses.OutOfElem();
+            expenses.push_back(expense);
         }
-             else
-        xmlExpenses.OutOfElem();
-
+        else
+            xmlExpenses.OutOfElem();
     }
     return expenses;
 }
@@ -70,7 +68,6 @@ void ExpensesXmlFile::addExpenseToFile(Expense expense)
     lastExpenseId++;
 }
 
-
 void ExpensesXmlFile::pushOneExpenseToXml(Expense expense)
 {
     xmlExpenses.AddElem("expense");
@@ -87,5 +84,3 @@ int ExpensesXmlFile::getLastExpenseId()
 {
     return lastExpenseId;
 }
-
-
